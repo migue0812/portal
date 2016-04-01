@@ -1,0 +1,49 @@
+
+/* 
+    Created on : 1/12/2015, 02:50:43 PM
+    Author     : Miguel
+*/
+/*---Botones Categorias---*/
+.contenedor-botones a{
+  border: 1px solid #e1dfdf;
+
+}
+.contenedor-botones a:hover{
+  opacity:0.8;
+  color: #23FF41;
+}
+
+/*---Botones Redes Sociales Registrarse---*/
+.redSocial-titulo{
+    text-align: center;
+}
+
+.redSocial .facebook-btn{
+    font-size: 30px;
+    color: #113CA1;
+}
+
+.redSocial .facebook-btn:hover{
+    font-size: 30px;
+    color: #185AF5;
+}
+
+.redSocial .google-plus-btn{
+    font-size: 30px;
+    color: #A81318;
+}
+
+.redSocial .google-plus-btn:hover{
+    font-size: 30px;
+    color: #FC2027;
+}
+
+.redSocial .twitter-btn{
+    font-size: 30px;
+    color: #198FB7;
+}
+
+.redSocial .twitter-btn:hover{
+    font-size: 30px;
+    color: #1EBFF4;
+}

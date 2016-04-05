@@ -65,9 +65,9 @@
             </li>
           </ul>
        <?php endif ?>
-        <form action="<?php echo url("home/busqueda") ?>" class="navbar-form navbar-right" role="search">
+          <form action="<?php echo url("home/busqueda/buscar") ?>" method="post" class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+              <input type="text" id="buscar" name="buscar" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">
             <span class="icon-magnifying-glass"></span>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Portal\Http\Requests;
 use Portal\Http\Controllers\Controller;
 use DB;
+use Illuminate\Support\Facades\Validator;
 
 class CategoriaController extends Controller
 {
@@ -22,14 +23,35 @@ class CategoriaController extends Controller
     }
     function postRegistrar(){
         
-    	$categoria = filter_input_array(INPUT_POST)['categoria'];
+    	//$categoria = filter_input_array(INPUT_POST)['categoria'];
+        $catNombre = $_POST["nombre"];
+        $catDescripcion = $_POST["descripcion"];
         $categoriaImg = $_FILES["imagen"]["name"];
         $categoriaRuta = $_FILES["imagen"]["tmp_name"];
         $categoriaDest = "img/".$categoriaImg;
         copy($categoriaRuta, $categoriaDest);
         
+        $reglas = array(
+            "nombre" => "required | max:20",
+            "descripcion" => "required | min:30"    
+        );
+        
+        $mensajes = [
+            "nombre.required" => "El campo nombre debe ser obligarorio",
+            "nombre.max" => "El campo nombre debe tener máximo 20 caracteres",
+            "descripcion.required" => "El campo descripcion debe ser obligarorio",
+            "descripcion.min" => "El campo descripcion debe tener máximo 30 caracteres",
+        ];
+        
+    $validacion = Validator::make($_POST, $reglas, $mensajes);
+        
+        if($validacion->fails()){
+           return redirect()->back() 
+                   ->withErrors($validacion->errors());
+        }
+        
         DB::insert("INSERT INTO bdp_categoria (cat_nombre, cat_descripcion, cat_activo, cat_created_at) "
-                . "VALUES (?,?,?,?)", array($categoria["nombre"], $categoria["descripcion"], 1, "CURRENT_TIMESTAMP"));
+                . "VALUES (?,?,?,?)", array($catNombre, $$catDescripcion, 1, "CURRENT_TIMESTAMP"));
         
         $id = DB::select('SELECT IFNULL(MAX(cat_id),0) AS id FROM bdp_categoria ORDER BY id DESC LIMIT 1');
         $id = $id[0]->id;

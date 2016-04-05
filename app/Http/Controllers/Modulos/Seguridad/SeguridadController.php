@@ -49,13 +49,15 @@ class SeguridadController extends Controller {
                             . "usu_password = ?", array($user, $password));
 
            
-            if($verificarUsuario[0]->usu_id === 1){
-              Session::put("usuarioAdmin", $user);
-              return redirect('home/index');  
-            }  elseif ($verificarUsuario[0]->usu_id !== 1) {
-                Session::put("usuarioLogueado", $user);
-                return redirect('home/index');
-        }}else {
+            if($verificarUsuario){
+              Session::put("usuarioLogueado", $user);
+            return redirect('home/index');  }
+//              elseif ($verificarUsuario[0]->usu_id !== 1) {
+//                Session::put("usuarioLogueado", $user);
+//                return redirect('home/index');
+//        }
+        
+            }else {
         Session::flash("usuarioInvalido", "Datos de usuario inválidos");
                 return redirect('seguridad/login');
 

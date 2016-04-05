@@ -21,7 +21,8 @@ class SitioController extends Controller
     	return view('Modulos.Home.sitioDet', compact('sitDetalle'));
     }
     function getRegistrar(){
-    	return view('Modulos.Sitio.registrar');
+        $categorias = DB::select("SELECT * FROM bdp_categoria");
+    	return view('Modulos.Sitio.registrar', compact("categorias"));
             }
     function postRegistrar(){
         $sitio = filter_input_array(INPUT_POST)['sitio'];

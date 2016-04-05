@@ -16,12 +16,10 @@
                                 <label class="control-label">Categoría:</label>
                                 <div class="">
                                     <select required id="sitio[categoria]" name="sitio[categoria]">
-                                        <option value="1">Cultura y Tradición</option>
-                                        <option value="2">Histórico</option>
-                                        <option value="3">Ecoturístico</option>
-                                        <option value="4">Religioso</option>
-                                        <option value="5">Entretenimiento</option>
-                                        <option value="6">Deportes</option></select>
+                                        <?php foreach ($categorias as $categoria): ?>
+                                        <option value="<?php echo ($categoria->cat_id) ?>"><?php echo ($categoria->cat_nombre) ?></option>
+                                        <?php endforeach ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">

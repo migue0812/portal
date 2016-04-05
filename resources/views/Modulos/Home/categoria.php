@@ -16,7 +16,7 @@
 
     <div class="row">
         <?php
-        $count = 0;
+        //$count = 0;
         foreach ($categorias as $categoria):
 //            if ($count++ == 6)
 //                break;

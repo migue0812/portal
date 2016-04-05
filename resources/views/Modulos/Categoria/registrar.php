@@ -8,15 +8,16 @@
             <section>
                 <div>
                     <div id="box-panel">
+                        
                         <form action="<?php echo url("home/categoria/registrar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="categoria[nombre]">Categoría</label>
-                                <input required type="text" id="categoria[nombre]" name="categoria[nombre]" class="form-control" placeholder="Nombre categoría">
+                                <label for="nombre">Categoría</label>
+                                <input required type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre categoría">
                             </div>
                             <div class="form-group">
-                                <label for="categoria[descripcion]" class="control-label">Descripcion:</label>
+                                <label for="descripcion" class="control-label">Descripcion:</label>
                                 <div class="">
-                                    <textarea required id="categoria[descripcion]" name="categoria[descripcion]" class="form-control" rows="5" id="comment"></textarea>
+                                    <textarea required id="descripcion" name="descripcion" class="form-control" rows="5" id="comment"></textarea>
                                 </div>
                             </div>                          
                             <div class="form-group">

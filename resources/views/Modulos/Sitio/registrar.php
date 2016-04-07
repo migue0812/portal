@@ -4,7 +4,7 @@
             <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Formulario Sitio</h3>
         </div>
         <div class="panel-body">
-            <section class="main container">
+            <section class="">
                 <div class="box">
                     <div id="box-panel">
                         <form action="<?php echo url("home/sitio/registrar") ?>" method="post" enctype="multipart/form-data">
@@ -16,10 +16,12 @@
                                 <label class="control-label">Categoría:</label>
                                 <div class="">
                                     <select required id="sitio[categoria]" name="sitio[categoria]">
-                                        <?php foreach ($categorias as $categoria): ?>
-                                        <option value="<?php echo ($categoria->cat_id) ?>"><?php echo ($categoria->cat_nombre) ?></option>
-                                        <?php endforeach ?>
-                                    </select>
+                                        <option value="1">Cultura y Tradición</option>
+                                        <option value="2">Histórico</option>
+                                        <option value="3">Ecoturístico</option>
+                                        <option value="4">Religioso</option>
+                                        <option value="5">Entretenimiento</option>
+                                        <option value="6">Deportes</option></select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -41,11 +43,6 @@
                                 <label for="">Imagen</label>
                                 <input required type="file" id="imagen" name="imagen">
                                 <p class="help-block">Example block-level help text here.</p>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
                             </div>
                             <div class="form-group">
                                 <div class="">

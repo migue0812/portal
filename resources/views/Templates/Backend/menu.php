@@ -11,7 +11,7 @@
                     <a class="enlace-menu" href="<?php echo url("home/categoria/registrar")?>"><i class="fa fa-fw fa-file-code-o"></i> Crear</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-eye"></i> Listar</a>
+                    <a class="enlace-menu" href="<?php echo url("home/categoria/listar")?>"><i class="fa fa-fw fa-eye"></i> Listar</a>
                 </li>
             </ul>
         </li>
@@ -33,7 +33,7 @@
                     <a class="enlace-menu" href="<?php echo url("home/sitio/registrar")?>"><i class="fa fa-fw fa-file"></i> Crear</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-eye"></i> Listar</a> 
+                    <a class="enlace-menu" href="<?php echo url("home/sitio/listar")?>"><i class="fa fa-fw fa-eye"></i> Listar</a> 
                 </li>
             </ul>
         </li>

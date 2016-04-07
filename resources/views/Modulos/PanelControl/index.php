@@ -24,15 +24,6 @@
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <i class="fa fa-info-circle"></i>  <strong>Bienvenido Admin</strong> Todos Los Permisos <a href="" class="alert-link"> De Administrador </a> Gestiona!
                 </div>
-                <?php if ($errors->any()): ?>
-                         <div class="alert alert-danger center-block" role="alert">
-                             <ul>
-                              <?php foreach ($errors as $error): ?>  
-                                 <li><?php echo $error ?></li>
-                                 <?php endforeach ?>
-                             </ul>
-                         </div>
-                        <?php endif ?>
             </div>
         </div>
         <!-- /.row -->

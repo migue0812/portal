@@ -24,7 +24,7 @@ Route::controllers([
     'home/sitiodet' => "Modulos\Home\SitioController",
     'usuario' => "Modulos\Usuario\UsuarioController",
     'home/evento' => "Modulos\Home\EventoController",
-    'home/itinerario' => "Modulos\Home\ItinerarioController",
+    'itinerario' => "Modulos\Home\ItinerarioController",
     'seguridad' => "Modulos\Seguridad\SeguridadController",
     'panelcontrol' => "Modulos\Home\PanelControlController",
     

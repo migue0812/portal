@@ -10,6 +10,12 @@ use Portal\Http\Controllers\Controller;
 class ItinerarioController extends Controller
 {
     function getIndex(){
-    	return view('Modulos.Home.itinerario');
+    	return view('Modulos.Itinerario.itinerario');
+    }
+    function getSitios(){
+    	return view('Modulos.Itinerario.sitios');
+    }
+    function getEventos(){
+    	return view('Modulos.Itinerario.eventos');
     }
 }

@@ -59,7 +59,7 @@ class CategoriaController extends Controller
         DB::insert("INSERT INTO bdp_imagen (cat_id, img_ruta) VALUES (?,?)",
                 array ($id, $categoriaDest));
         
-        return redirect(url('home/categoria/registrar'));
+        return redirect(url('panelcontrol'));
     }
     function getListar(){
         $categorias = DB::select("SELECT * FROM bdp_categoria");

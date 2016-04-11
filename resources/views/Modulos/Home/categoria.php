@@ -30,9 +30,9 @@
                         </div>
                     </div>
                     <h2 class="titulo-evento">
-                        <a href="#" id="til"><?php echo ($categoria->cat_nombre) ?></a>
+                        <a href="#" id="til"><?php echo $categoria->cat_nombre ?></a>
                     </h2>
-                    <p><span class="articulofecha" id="do">25 Noviembre 2015</span> por <span class="articulo-autor"><a href="#">Admin</a></span></p>
+                    <p><span class="articulofecha" id="do"><?php echo $categoria->cat_created_at ?></span> por <span class="articulo-autor"><a href="#">Admin</a></span></p>
                     <p class="articulo-contenido text-justify">
                         <i><?php echo ($categoria->cat_descripcion) ?></i>
                     </p>

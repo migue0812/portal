@@ -27,7 +27,7 @@
                 <?php if ($errors->any()): ?>
                          <div class="alert alert-danger center-block" role="alert">
                              <ul>
-                              <?php foreach ($errors as $error): ?>  
+                              <?php foreach ($errors->all() as $error): ?>  
                                  <li><?php echo $error ?></li>
                                  <?php endforeach ?>
                              </ul>

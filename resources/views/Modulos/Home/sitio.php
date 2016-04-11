@@ -4,14 +4,7 @@
 <section class="container container-fluid main">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <section class="sitio-header">
-                <main class="container" role="main">
-                    <article class="articulo">                        
-                        <div class="">
-                            <img class="imgarticle img-responsive" src="<?php echo asset("img/map-explore.jpg") ?>" alt="Imagen">
-                        </div>
-                </main>
-            </section>
+            
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <section class="sitio-contenido">

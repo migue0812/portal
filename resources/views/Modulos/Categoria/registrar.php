@@ -8,28 +8,21 @@
             <section>
                 <div>
                     <div id="box-panel">
-                        
-                        <form action="<?php echo url("home/categoria/registrar") ?>" method="post" enctype="multipart/form-data">
+                        <form id="formAjax" action="<?php echo url("home/categoria/registrar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="nombre">Categoría</label>
-                                <input required type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre categoría">
+                                <label for="categoria[nombre]">Categoría</label>
+                                <input required type="text" id="categoria[nombre]" name="categoria[nombre]" class="form-control" placeholder="Nombre categoría">
                             </div>
                             <div class="form-group">
-                                <label for="descripcion" class="control-label">Descripcion:</label>
+                                <label for="categoria[descripcion]" class="control-label">Descripcion:</label>
                                 <div class="">
-                                    <textarea required id="descripcion" name="descripcion" class="form-control" rows="5" id="comment"></textarea>
+                                    <textarea required id="categoria[descripcion]" name="categoria[descripcion]" class="form-control" rows="5" id="comment"></textarea>
                                 </div>
                             </div>                          
                             <div class="form-group">
                                 <label for="imagen">Imagen</label>
                                 <input required type="file" id="imagen" name="imagen">
-                                <p class="help-block">Example block-level help text here.</p>
-                            </div>
-
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
+                                <p class="help-block">Sube tu imagen</p>
                             </div>
                             <div class="form-group">
                                 <div class="">

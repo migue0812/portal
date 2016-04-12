@@ -1,4 +1,4 @@
-<div class="col-lg-12">
+<div id="box-panel" class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Formulario Categoria</h3>
@@ -25,7 +25,8 @@
                                     <td><?php echo $categoria->cat_nombre ?></td>
                                     <td><a href="<?php echo url("home/categoria/detalle/" . $categoria->cat_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
                                         <a href="<?php echo url("home/categoria/editar/" . $categoria->cat_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
-                                        <a href="" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a></td>
+                                        <a href="" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
+                                    </td>
                                 </tr>
                                 <?php
                             endforeach

@@ -1,7 +1,7 @@
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Formulario Sitio</h3>
+            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-file-text-o "></i> Formulario Sitio</h3>
         </div>
         <div class="panel-body">
             <section class="">
@@ -17,7 +17,7 @@
                                 <div class="">
                                     <select required id="sitio[categoria]" name="sitio[categoria]">
                                         <?php foreach ($categorias as $categoria): ?>
-                                        <option value="<?php echo $categoria->cat_id ?>"><?php echo $categoria->cat_nombre ?></option>
+                                            <option value="<?php echo $categoria->cat_id ?>"><?php echo $categoria->cat_nombre ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -52,6 +52,6 @@
                     </div>
                 </div>
             </section>
-        </div> 
+        </div>
     </div>
 </div>

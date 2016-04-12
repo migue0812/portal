@@ -19,6 +19,7 @@ Route::controllers([
     'home/index' => "Modulos\Home\IndexController",
     'home/busqueda' => "Modulos\Home\BusquedaController",
     'home/categoria' => "Modulos\Home\CategoriaController",
+    'home/subcategoria' => "Modulos\Home\SubCategoriaController",
     'home/categoriadet' => "Modulos\Home\CategoriaController",
     'home/sitio' => "Modulos\Home\SitioController",
     'home/sitiodet' => "Modulos\Home\SitioController",

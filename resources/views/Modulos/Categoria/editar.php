@@ -1,5 +1,4 @@
-<?php include ("/../../Templates/Frontend/head.php") ?>
-<?php include ("/../../Templates/Frontend/header.php") ?>
+
 
 <section class="main container">
 
@@ -35,5 +34,3 @@
                 </div>
             </div> 
 </section>
-<?php include ("/../../Templates/Frontend/foot.php") ?>
-<?php include ("/../../Templates/Frontend/footer.php") ?>

@@ -8,10 +8,10 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#menuOne"><i class="fa fa-fw fa-folder-o"></i> Categorias <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="menuOne" class="collapse">
                 <li>
-                    <a class="enlace-menu" href="<?php echo url("home/categoria/registrar")?>"><i class="fa fa-fw fa-file-code-o"></i> Crear</a>
+                    <a class="enlace-menu" href="<?php echo url("home/categoria/registrar") ?>"><i class="fa fa-fw fa-file-code-o"></i> Crear</a>
                 </li>
                 <li>
-                    <a class="enlace-menu" href="<?php echo url("home/categoria/listar")?>"><i class="fa fa-fw fa-eye"></i> Listar</a>
+                    <a class="enlace-menu" href="<?php echo url("home/categoria/listar") ?>"><i class="fa fa-fw fa-eye"></i> Listar</a>
                 </li>
             </ul>
         </li>
@@ -19,7 +19,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#menuTwo"><i class="fa fa-fw fa-folder-o"></i> Subcategorias <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="menuTwo" class="collapse">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-file-code-o"></i> Crear</a>
+                    <a class="enlace-menu" href="<?php echo url("home/subcategoria/registrar") ?>"><i class="fa fa-fw fa-file-code-o"></i> Crear</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-eye"></i> Listar</a>
@@ -30,10 +30,10 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#menuTree"><i class="fa fa-fw fa-edit"></i> Sitios <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="menuTree" class="collapse">
                 <li>
-                    <a class="enlace-menu" href="<?php echo url("home/sitio/registrar")?>"><i class="fa fa-fw fa-file"></i> Crear</a>
+                    <a class="enlace-menu" href="<?php echo url("home/sitio/registrar") ?>"><i class="fa fa-fw fa-file"></i> Crear</a>
                 </li>
                 <li>
-                    <a class="enlace-menu" href="<?php echo url("home/sitio/listar")?>"><i class="fa fa-fw fa-eye"></i> Listar</a> 
+                    <a class="enlace-menu" href="<?php echo url("home/sitio/listar") ?>"><i class="fa fa-fw fa-eye"></i> Listar</a>
                 </li>
             </ul>
         </li>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Portal\Http\Requests;
 use Portal\Http\Controllers\Controller;
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class SitioController extends Controller
 {
@@ -44,7 +45,9 @@ class SitioController extends Controller
         DB::insert("INSERT INTO bdp_imagen (sit_id, img_ruta) VALUES (?,?)",
                 array ($id, $sitioDest));
         
-        return redirect(url('home/sitio/registrar'));
+        Session::flash("sitioRegistrado", "Sitio Registrado Exitosamente");
+        
+        return redirect(url('panelcontrol'));
     	
             }
             function getListar(){
@@ -57,7 +60,7 @@ class SitioController extends Controller
                 . "AND bdp_imagen.sit_id = bdp_sitio.sit_id",
                 array($id));
         $sitios = $sitios[0];
-        
+                      
         return view('Modulos.Sitio.editar', compact("sitios"));
 }
 
@@ -68,6 +71,8 @@ class SitioController extends Controller
                 . "sit_telefono = ?, sit_descripcion = ?, sit_updated_at = CURRENT_TIMESTAMP WHERE sit_id = ?",
                 array($sitio["nombre"], $sitio["categoria"], $sitio["direccion"], 
                     $sitio["telefono"], $sitio["descripcion"], $sitio["id"]));
-        return redirect(url("home/sitio/listar"));
+        
+        Session::flash("sitioEditado", "Se ha editado el sitio exitosamente");
+        return redirect(url("panelcontrol"));
     }
 }

@@ -15,8 +15,9 @@ class BusquedaController extends Controller
     }
     function postBuscar(){
         $buscar = filter_input(INPUT_POST, "buscar");
-        $resultados = DB::select("SELECT * FROM bdp_sitio, bdp_evento WHERE "
-                . "sit_nombre LIKE '%$buscar%'");
+        $resultados = DB::select("SELECT * FROM bdp_sitio, bdp_evento, bdp_imagen WHERE "
+                . "sit_nombre LIKE '%$buscar%' OR eve_nombre LIKE '%$buscar%' AND "
+                . "bdp_sitio.sit_id=bdp_imagen.sit_id");
     	return view('Modulos.Home.busqueda', compact("resultados"));
     }
     

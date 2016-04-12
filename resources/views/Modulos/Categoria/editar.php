@@ -4,7 +4,7 @@
 <section class="main container">
 
                 <div class="box">
-                    <div class="box-top">Crear Categoría</div>
+                    <div class="box-top">Editar Categoría</div>
                     <div id="box-panel">
                         <form action="<?php echo url("home/categoria/editar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
@@ -24,14 +24,9 @@
                                 <p class="help-block"><?php echo $categorias->img_ruta ?></p>
                             </div>
                             
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Check me out
-                                </label>
-                            </div>
-                            <div class="form-group">
+                               <div class="form-group">
                                 <div class="">
-                                    <input type="submit" class="btn btn-default" value="Crear">
+                                    <input type="submit" class="btn btn-default" value="Editar">
                                     <a class="btn btn-default btn-cancel" value="Guardar" href="<?php echo url("home/index") ?>">Cancelar</a>
                                 </div>
                             </div>

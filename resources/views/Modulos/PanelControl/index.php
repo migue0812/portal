@@ -24,7 +24,19 @@
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                     <i class="fa fa-info-circle"></i>  <strong>Bienvenido Admin</strong> Todos Los Permisos <a href="" class="alert-link"> De Administrador </a> Gestiona!
                 </div>
-                <?php if ($errors->any()): ?>
+                <?php if (Session::has("categoriaRegistrada")):?>
+    <div class="alert alert-success center-block" role="alert"><?php echo Session::get("categoriaRegistrada") ?></div>
+                <?php endif ?>
+    <?php if (Session::has("categoriaEditada")):?>
+    <div class="alert alert-warning center-block" role="alert"><?php echo Session::get("categoriaEditada") ?></div>
+                <?php endif ?>
+    <?php if (Session::has("sitioRegistrado")):?>
+    <div class="alert alert-success center-block" role="alert"><?php echo Session::get("sitioRegistrado") ?></div>
+                <?php endif ?>
+    <?php if (Session::has("sitioEditado")):?>
+    <div class="alert alert-warning center-block" role="alert"><?php echo Session::get("sitioEditado") ?></div>
+                <?php endif ?>
+        <?php if ($errors->any()): ?>
                          <div class="alert alert-danger center-block" role="alert">
                              <ul>
                               <?php foreach ($errors->all() as $error): ?>  

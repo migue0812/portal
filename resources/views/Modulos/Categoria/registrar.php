@@ -8,7 +8,7 @@
             <section>
                 <div>
                     <div id="box-panel">
-                        <form id="formAjax" action="<?php echo url("home/categoria/registrar") ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo url("home/categoria/registrar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="nombre">Categoría</label>
                                 <input required type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre categoría">

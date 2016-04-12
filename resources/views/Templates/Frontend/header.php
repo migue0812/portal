@@ -56,7 +56,7 @@
                 <li role="separator" class="divider"></li> 
                 <li><a href="">Mi itinerario</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="">Panel de control</a></li>
+                <li><a href="../panelcontrol">Panel de control</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="">Configuración</a></li>
                 <li role="separator" class="divider"></li>
@@ -65,9 +65,9 @@
             </li>
           </ul>
        <?php endif ?>
-        <form action="<?php echo url("home/busqueda") ?>" class="navbar-form navbar-right" role="search">
+          <form action="<?php echo url("home/busqueda/buscar") ?>" method="post" class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+              <input type="text" id="buscar" name="buscar" class="form-control" placeholder="Search">
           </div>
           <button type="submit" class="btn btn-default">
             <span class="icon-magnifying-glass"></span>

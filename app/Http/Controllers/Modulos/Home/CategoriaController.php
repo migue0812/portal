@@ -8,6 +8,7 @@ use Portal\Http\Requests;
 use Portal\Http\Controllers\Controller;
 use DB;
 use \Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class CategoriaController extends Controller
 {
@@ -64,6 +65,8 @@ class CategoriaController extends Controller
         DB::insert("INSERT INTO bdp_imagen (cat_id, img_ruta) VALUES (?,?)",
                 array ($id, $categoriaDest));
         
+        Session::flash("categoriaRegistrada", "Categoría Registrada Exitosamente");
+        
         return redirect(url('panelcontrol'));
     }
     function getListar(){
@@ -85,6 +88,7 @@ class CategoriaController extends Controller
         
         DB::update("UPDATE bdp_categoria SET cat_nombre = ?, cat_descripcion = ?, cat_updated_at = CURRENT_TIMESTAMP WHERE cat_id = ?",
                 array($categoria["nombre"], $categoria["descripcion"], $categoria["id"]));
-        return redirect(url("home/categoria/listar"));
+        Session::flash("categoriaEditada", "Se ha editado la categoría exitosamente");
+        return redirect(url("panelcontrol"));
     }
 }

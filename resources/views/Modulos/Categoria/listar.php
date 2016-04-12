@@ -23,7 +23,7 @@
                                 <tr>
                                     <td><?php echo $count++ ?></td>
                                     <td><?php echo $categoria->cat_nombre ?></td>
-                                    <td><a href="" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
+                                    <td><a href="<?php echo url("home/categoria/detalle/" . $categoria->cat_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
                                         <a href="<?php echo url("home/categoria/editar/" . $categoria->cat_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
                                         <a href="" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a></td>
                                 </tr>

@@ -15,8 +15,13 @@ class CategoriaController extends Controller
         $categorias = DB::select("SELECT * FROM bdp_categoria, bdp_imagen WHERE bdp_imagen.cat_id = bdp_categoria.cat_id");
     	return view('Modulos.Home.categoria', compact("categorias"));
     }
-    function getDetalle(){
-    	return view('Modulos.Home.categoriaDet');
+    function getDetalle($id){
+        $catDetalle = DB::select("SELECT * FROM bdp_categoria, bdp_imagen WHERE bdp_categoria.cat_id = ? AND bdp_imagen.cat_id = ? AND bdp_imagen.cat_id = bdp_categoria.cat_id",
+                array($id, $id));
+        $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen, bdp_categoria WHERE bdp_sitio.cat_id = ? AND bdp_categoria.cat_id = ? AND bdp_sitio.cat_id = bdp_categoria.cat_id AND bdp_imagen.sit_id = bdp_sitio.sit_id",
+                array($id, $id));
+        $catDetalle = $catDetalle[0];
+    	return view('Modulos.Home.categoriaDet', compact("catDetalle"), compact("sitios"));
     }
     function getRegistrar(){
     	return view('Modulos.Categoria.registrar');

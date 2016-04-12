@@ -2,7 +2,7 @@
 <?php include ("/../../Templates/Frontend/header.php") ?>
 <section class="container main">
   <div class="row ">
-    <div class="miga-de-pan col-md-10">
+    <div class="miga-de-pan col-md-12">
       <ol class="breadcrumb">
         <li class="inicio"><a href="#"></a>Inicio</li>
         <li><a href="#" id="til">Categorias</a></li>
@@ -13,59 +13,43 @@
 
   <!--Termina Miga De Pan-->
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
       <article class="articulo">    
         <a>
           <div class="back">
             <article class="slideuno " >
               <div class="slides">
-                <img src="<?php echo asset("img/dos.jpg") ?>" alt="Imagen">
-                <img src="<?php echo asset("img/seis.jpg") ?>" alt="Imagen">
-                <img src="<?php echo asset("img/tres.jpg") ?>" alt="Imagen">
-              </div>
+                <img src="<?php echo asset("$catDetalle->img_ruta") ?>" alt="Imagen">
+               </div>
           </div>
         </a>
         <h2 class="titulo-evento">
-          <a href="#">Ecoturismo En Buga</a>
+          <a href="#"><?php echo $catDetalle->cat_nombre ?></a>
         </h2>
         <p><span class="articulofecha"></span> por <span class="articulo-autor"><a href="#">Admin</a></span></p>
         <p class="articulo-contenido text-justify">
-          Etiam eu eros justo. Mauris semper rutrum felis, ac aliquam 
-          nibh dictum eu. Nam fermentum id tellus tempus tincidunt. 
-          Nulla dictum, ligula vitae feugiat rutrum, urna mauris lobortis
-          neque, vitae accumsan erat erat ut nibh. Donec faucibus porta 
-          lectus non imperdiet.<br> Mauris feugiat diam sapien, consequat 
-          molestie odio placerat eu. Vestibulum id magna nibh. Morbi
-          suscipit vestibulum malesuada. Integer dictum tortor et quam
-          porttitor rhoncus. Integer at mi laoreet dolor rhoncus porttitor.
-          Etiam laoreet, tellus non maximus tempor, ipsum tellus condimentum 
-          est, sit amet auctor sapien lorem ut sapien. Cras nibh felis, 
-          congue at pellentesque quis, suscipit eget est.
+          <?php echo $catDetalle->cat_descripcion ?>
         </p>      
       </article>
     </div>
-
-    <aside class="col-md-2 hidden-xs hidden-sm " >
-      <h4>Categorias</h4>    
-      <div class="list-group">
-        <a href="#" class="list-group-item active">Religion</a>
-        <a href="#" class="list-group-item">Deportes</a>
-        <a href="#" class="list-group-item">Ecoturismo</a>
-        <a href="#" class="list-group-item">Cicloturismo</a>
-        <a href="#" class="list-group-item">Gastronomia</a>
-      </div>
-      <h4>Articulos Recientes</h4>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-heading">Buga tatto el mejor evento de arte en la ciudad de buga</h4>
-        <p class="list-item-text">Participa en el evento</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-heading">Buga tatto el mejor evento de arte en la ciudad de buga</h4>
-        <p class="list-item-text">Participa en el evento</p>
-      </a>
-    </aside>
   </div>
-
+<?php
+                        $count = 0;
+                        foreach ($sitios as $sitio):
+//                            if ($count++ == 6)
+//                                break;
+                            ?>
+                            <figure class="col-xs-12 col-sm-6 col-md-4">
+                                <div class="contenedor-img fx">  
+                                    <img class="img-contenido img-responsive" src="<?php echo asset($sitio->img_ruta) ?>" alt="Imagen" />  
+                                    <div class="mascara">
+                                        <h2><?php echo ($sitio->sit_nombre) ?></h2>
+                                        <p><?php echo ((strlen($sitio->sit_descripcion) > 100) ? substr(($sitio->sit_descripcion), 0, 100) . " ..." : ($sitio->sit_descripcion)) ?></p>
+                                        <a class="link" href="<?php echo url("home/sitio/detalle/" . $sitio->sit_id) ?>">Leer mas</a>
+                                    </div>
+                                </div>
+                            </figure>
+                        <?php endforeach; ?>
 </section>
 <?php include ("/../../Templates/Frontend/foot.php") ?>
 <?php include ("/../../Templates/Frontend/footer.php") ?>

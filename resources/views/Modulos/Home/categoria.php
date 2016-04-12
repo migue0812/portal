@@ -37,7 +37,7 @@
                         <i><?php echo ($categoria->cat_descripcion) ?></i>
                     </p>
                     <div class="contenedor-botones">
-                        <a href="" class="btn icon-circle-with-plus"> Ver Mas</a>
+                        <a href="<?php echo url("home/categoria/detalle/" . $categoria->cat_id) ?>" class="btn icon-circle-with-plus"> Ver Mas</a>
                     </div>
 
                 </article>

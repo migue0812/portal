@@ -23,8 +23,8 @@ class SeguridadController extends Controller {
         $registro = filter_input_array(INPUT_POST)['registro'];
 
         $usuario = DB::insert('INSERT INTO bdp_usuario '
-                . '(usu_usuario, usu_password, usu_activado, rol_id) '
-                . 'VALUES (?,?,?,?)', array($registro['nick'], $registro['password'], 1, 2));
+                        . '(usu_usuario, usu_password, usu_activado, rol_id) '
+                        . 'VALUES (?,?,?,?)', array($registro['nick'], $registro['password'], 1, 2));
 
         $id = DB::select('SELECT IFNULL(MAX(usu_id),0) AS id FROM bdp_usuario ORDER BY id DESC LIMIT 1');
         $id = $id[0]->id;
@@ -33,7 +33,7 @@ class SeguridadController extends Controller {
                 . 'dus_genero, dus_fecha_nacimiento) '
                 . 'VALUES (?,?,?,?,?,?)', array($id, $registro['nombre'], $registro['apellidos'],
             $registro['email'], $registro['genero'], $registro['fecha']));
-        
+
         Session::flash("usuarioRegistrado", "Usuario Registrado Exitosamente");
         return redirect(url('seguridad/login'));
     }
@@ -47,29 +47,34 @@ class SeguridadController extends Controller {
             $verificarUsuario = DB::select("SELECT usu_id FROM bdp_usuario WHERE usu_deleted_at IS NULL "
                             . "AND usu_activado = '1' AND usu_usuario = ? AND "
                             . "usu_password = ?", array($user, $password));
-            $datosUsuario = DB::select("SELECT bdp_usuario.usu_id AS id, usu_usuario AS usuario, dus_nombre AS nombre, dus_apellidos AS apellidos FROM bdp_usuario "
-            . "INNER JOIN bdp_dato_usuario ON bdp_usuario.usu_id=bdp_dato_usuario.dus_id WHERE (bdp_usuario.usu_deleted_at "
-            . "IS NULL AND bdp_usuario.usu_activado = '1') AND bdp_dato_usuario.dus_deleted_at IS NULL "
-            . "AND (usu_usuario = ? AND usu_password = ?)", array($user, $password));
 
-           
-            if($verificarUsuario){
-              Session::put("usuarioLogueado", $user);
-            return redirect('home/index');  }
-//              elseif ($verificarUsuario[0]->usu_id !== 1) {
-//                Session::put("usuarioLogueado", $user);
-//                return redirect('home/index');
-//        }
-        
-            }else {
-        Session::flash("usuarioInvalido", "Datos de usuario inválidos");
-                return redirect('seguridad/login');
+//            $datosUsuario = DB::select("SELECT bdp_usuario.usu_id AS id, usu_usuario AS usuario, dus_nombre AS nombre, dus_apellidos AS apellidos FROM bdp_usuario "
+//            . "INNER JOIN bdp_dato_usuario ON bdp_usuario.usu_id=bdp_dato_usuario.dus_id WHERE (bdp_usuario.usu_deleted_at "
+//            . "IS NULL AND bdp_usuario.usu_activado = '1') AND bdp_dato_usuario.dus_deleted_at IS NULL "
+//            . "AND (usu_usuario = ? AND usu_password = ?)", array($user, $password));
 
-            } 
-            }         
-        
-        function getLogout() {
-        Session::forget("usuarioLogueado");
-         return view('Modulos.Home.index');
-}
+            //foreach ($verificarUsuario as $id) {
+                if (empty($verificarUsuario[0])){
+                    Session::flash("usuarioInvalido", "Datos de usuario inválidos");
+                    return redirect('seguridad/login');
+                }
+                elseif ($verificarUsuario[0]->usu_id !== 1) {
+                    Session::put("usuarioLogueado", $user);
+                    Session::put("usuarioId", $verificarUsuario[0]->usu_id);
+                    return redirect('home/index');
+                } elseif ($verificarUsuario[0]->usu_id === 1) {
+                    Session::put("usuarioAdmin", "Admin");
+                    return redirect('home/index');
+           // } 
+            }
+        }
     }
+
+    function getLogout() {
+        Session::forget("usuarioLogueado");
+        Session::forget("usuarioId");
+        Session::forget("usuarioAdmin");
+        return view('Modulos.Home.index');
+    }
+
+}

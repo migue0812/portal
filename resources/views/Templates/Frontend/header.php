@@ -41,21 +41,30 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-            <?php if (Session::has("usuarioLogueado") !== true):?>
+            <?php if ((Session::has("usuarioLogueado") !== true) && (Session::has("usuarioAdmin") !== true)):?>
             <li><a href="<?php echo url("seguridad/login") ?>">Ingresar</a></li>
             <li><a href="<?php echo url("seguridad/registro") ?>">Registrar</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-          <?php else : ?>
+          <?php elseif (Session::has("usuarioLogueado")): ?>
             <li><a href="#"><img src="<?php echo asset("img/avatar.png") ?>" /><?php echo ' ' . Session::get("usuarioLogueado") ?></a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li role="separator" class="divider"></li> 
+              <ul class="dropdown-menu"> 
                 <li><a href="">Mi itinerario</a></li>
                 <li role="separator" class="divider"></li>
+                <li><a href="">Configuración</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<?php echo url("seguridad/logout") ?>">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <?php elseif (Session::has("usuarioAdmin")): ?>
+            <li><a href="#"><img src="<?php echo asset("img/avatar.png") ?>" /><?php echo ' ' . Session::get("usuarioAdmin") ?></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+              <ul class="dropdown-menu">
                 <li><a href="../panelcontrol">Panel de control</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="">Configuración</a></li>

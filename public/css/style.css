@@ -1,4 +1,4 @@
-/* 
+/*
     Created on : 25/11/2015, 10:42:12 AM
     Author     : balem
 */
@@ -19,7 +19,7 @@
 }
 .navbar-default .navbar-toggle{
     background:#000;
-  
+
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #ffffff;
@@ -28,7 +28,7 @@
     color: #434343;
 }
 
- 
+
 .jumbotron {
     padding-bottom: 5px;
     padding-top: 18px;
@@ -55,11 +55,11 @@
 .nav-header > h1 > a{
     font-family:ralewayBold;
     font-size:25pt;
-    color:#333;  
+    color:#333;
     font-weight:900;
 }
 .nav-header > p {
-    font-family:sourcesans-ligth; 
+    font-family:sourcesans-ligth;
     line-height: 36px;
     color:#424242;
     font-size:13pt;
@@ -74,7 +74,7 @@
 }
 /*---Miga De Pan---*/
 .miga-de-pan{
-    padding-bottom:20px; 
+    padding-bottom:20px;
 }
 /*---Panel De Control ---*/
 .header-panel{
@@ -313,7 +313,7 @@ a:focus {
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
     z-index: 2;
     color: #ffffff;
-    background-color: #19C933;   
+    background-color: #19C933;
     border-color: #19C933;
 }
 a.list-group-item:hover, button.list-group-item:hover, a.list-group-item:focus, button.list-group-item:focus {
@@ -760,11 +760,11 @@ figure{
 }
 .comments-list .comment-avatar img{
     width:100%;
-    height:100%; 
+    height:100%;
 }
 .reply-list .comment-avatar {
     width:50px;
-    height:50px; 
+    height:50px;
 }
 .comment-main-level{
     overflow:hidden;
@@ -779,7 +779,7 @@ figure{
 /*---Caja De comentarios---*/
 .comments-list .comment-box{
     width:680px;
-    position:relative;  
+    position:relative;
     float:right;
     box-shadow:0px 1px 1px rgba(0,0,0,0.15);
     -moz-box-shadow:0px 1px 1px rgba(0,0,0,0.15);
@@ -800,7 +800,7 @@ figure{
 }
 .comments-list .comment-box:before{
     border-width:11px 13px 11px 0px;
-    border-color:transparent rgba(0,0,0,0.05);  
+    border-color:transparent rgba(0,0,0,0.05);
     left:-12px;
 
 }
@@ -926,7 +926,7 @@ figure{
 .footDerechos{
     margin-top:20px;
 }
-.copyright{ 
+.copyright{
     font-size:15px;
 }
 .copyright > p > a{
@@ -1073,11 +1073,11 @@ figure{
 
 }
 .WhatToDo-cont  h3{
-    font-size: 24px;  
+    font-size: 24px;
 
 }
 .WhatToDo-img  a{
-    font-size: 24px;  
+    font-size: 24px;
     font-family: AvenirLTStd,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
     text-transform: uppercase;
@@ -1123,4 +1123,12 @@ figure{
 .city-social a:hover{
     opacity:0.8;
     color: #23FF41;
+}
+
+.pull-right{
+    float: right !important;
+}
+.emisora{
+    padding-top: 15px;
+
 }

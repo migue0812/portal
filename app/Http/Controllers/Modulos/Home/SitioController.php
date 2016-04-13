@@ -8,6 +8,7 @@ use Portal\Http\Requests;
 use Portal\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Session;
+use \Illuminate\Support\Facades\Validator;
 
 class SitioController extends Controller
 {
@@ -26,18 +27,51 @@ class SitioController extends Controller
     	return view('Modulos.Sitio.registrar', compact("categorias"));
             }
     function postRegistrar(){
-        $sitio = filter_input_array(INPUT_POST)['sitio'];
+        //$sitio = filter_input_array(INPUT_POST)['sitio'];
+        $sitNombre = $_POST["nombre"];
+        $sitCategoria = $_POST["categoria"];
+        $sitDireccion = $_POST["direccion"];
+        $sitTelefono = $_POST["telefono"];
+        $sitDescripcion = $_POST["descripcion"];
         
         $sitioImg = $_FILES["imagen"]["name"];
         $sitioRuta = $_FILES["imagen"]["tmp_name"];
         $sitioDest = "img/".$sitioImg;
         copy($sitioRuta, $sitioDest);
         
+        $reglas = array(
+            "nombre"  => "required | max:40",
+            "direccion" => "required | max:20",
+            "telefono" => "required | integer | min:7",
+            "descripcion" => "required | min:30" ,
+            "imagen" => "image"
+        );
+        
+        $mensajes = [
+            "nombre.required" => "El campo nombre debe ser obligarorio",
+            "nombre.max" => "El campo nombre debe tener máximo 40 caracteres",
+            "direccion.required" => "El campo dirección debe ser obligarorio",
+            "direccion.max" => "El campo dirección debe tener máximo 20 caracteres",
+            "telefono.required" => "El campo teléfono debe ser obligarorio",
+            "telefono.min" => "El campo teléfono debe tener minímo 7 caracteres",
+            "telefono.int" => "El campo teléfono debe ser un valor numérico",
+            "descripcion.required" => "El campo descripción debe ser obligarorio",
+            "descripcion.min" => "El campo descripción debe tener minímo 30 caracteres",
+            "imagen.image" => "El campo imagen debe contener una imagen",
+        ];
+        
+    $validacion = Validator::make($_POST, $reglas, $mensajes);
+        
+        if($validacion->fails()){
+           return redirect(url('panelcontrol')) 
+                   ->withErrors($validacion->errors());
+        }
+        
         DB::insert("INSERT INTO bdp_sitio (sit_nombre, sit_descripcion, "
                 . "cat_id, sit_direccion, sit_telefono, sit_latitud, sit_longitud,"
-                . "est_id, usu_id) VALUES (?,?,?,?,?,?,?,?,?)", array($sitio["nombre"],
-                    $sitio["descripcion"], $sitio["categoria"], $sitio["direccion"], 
-                    $sitio["telefono"], 101010101010, 1100110011, 1, 1));
+                . "est_id, usu_id) VALUES (?,?,?,?,?,?,?,?,?)", array($sitNombre,
+                    $sitDescripcion, $sitCategoria, $sitDireccion, 
+                    $sitTelefono, 101010101010, 1100110011, 1, 1));
         
         $id = DB::select('SELECT IFNULL(MAX(sit_id),0) AS id FROM bdp_sitio ORDER BY id DESC LIMIT 1');
         $id = $id[0]->id;
@@ -45,13 +79,13 @@ class SitioController extends Controller
         DB::insert("INSERT INTO bdp_imagen (sit_id, img_ruta) VALUES (?,?)",
                 array ($id, $sitioDest));
         
-        Session::flash("sitioRegistrado", "Sitio Registrado Exitosamente");
+        Session::flash("registrar", "Registro Exitoso");
         
         return redirect(url('panelcontrol'));
     	
             }
             function getListar(){
-        $sitios = DB::select("SELECT * FROM bdp_sitio");
+        $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_estado WHERE bdp_sitio.est_id=bdp_estado.est_id");
     	return view('Modulos.Sitio.listar', compact("sitios"));
     }
     
@@ -72,7 +106,15 @@ class SitioController extends Controller
                 array($sitio["nombre"], $sitio["categoria"], $sitio["direccion"], 
                     $sitio["telefono"], $sitio["descripcion"], $sitio["id"]));
         
-        Session::flash("sitioEditado", "Se ha editado el sitio exitosamente");
+        Session::flash("editar", "Edición Exitosa");
+        return redirect(url("panelcontrol"));
+    }
+    function getInhabilitar($id) {
+               
+        DB::update("UPDATE bdp_sitio SET est_id = 2, sit_deleted_at = CURRENT_TIMESTAMP WHERE sit_id = ?",
+                array($id));
+        
+        Session::flash("Inhabilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
     }
 }

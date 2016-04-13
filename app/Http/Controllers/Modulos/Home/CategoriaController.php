@@ -39,7 +39,8 @@ class CategoriaController extends Controller
         
         $reglas = array(
             "nombre" => "required | max:20",
-            "descripcion" => "required | min:30"    
+            "descripcion" => "required | min:30" ,
+            "imagen" => "image"
         );
         
         $mensajes = [
@@ -47,6 +48,7 @@ class CategoriaController extends Controller
             "nombre.max" => "El campo nombre debe tener máximo 20 caracteres",
             "descripcion.required" => "El campo descripción debe ser obligarorio",
             "descripcion.min" => "El campo descripción debe tener mínimo 30 caracteres",
+            "imagen.image" => "El campo imagen debe contener una imagen",
         ];
         
     $validacion = Validator::make($_POST, $reglas, $mensajes);
@@ -56,8 +58,8 @@ class CategoriaController extends Controller
                    ->withErrors($validacion->errors());
         }
         
-        DB::insert("INSERT INTO bdp_categoria (cat_nombre, cat_descripcion, cat_activo, cat_created_at) "
-                . "VALUES (?,?,?,?)", array($catNombre, $catDescripcion, 1, "CURRENT_TIMESTAMP"));
+        DB::insert("INSERT INTO bdp_categoria (cat_nombre, cat_descripcion, cat_activo) "
+                . "VALUES (?,?,?)", array($catNombre, $catDescripcion, 1,));
         
         $id = DB::select('SELECT IFNULL(MAX(cat_id),0) AS id FROM bdp_categoria ORDER BY id DESC LIMIT 1');
         $id = $id[0]->id;
@@ -65,7 +67,7 @@ class CategoriaController extends Controller
         DB::insert("INSERT INTO bdp_imagen (cat_id, img_ruta) VALUES (?,?)",
                 array ($id, $categoriaDest));
         
-        Session::flash("categoriaRegistrada", "Categoría Registrada Exitosamente");
+        Session::flash("registrar", "Registro Existoso");
         
         return redirect(url('panelcontrol'));
     }
@@ -88,7 +90,21 @@ class CategoriaController extends Controller
         
         DB::update("UPDATE bdp_categoria SET cat_nombre = ?, cat_descripcion = ?, cat_updated_at = CURRENT_TIMESTAMP WHERE cat_id = ?",
                 array($categoria["nombre"], $categoria["descripcion"], $categoria["id"]));
-        Session::flash("categoriaEditada", "Se ha editado la categoría exitosamente");
+        Session::flash("editar", "Edición Exitosa");
+        return redirect(url("panelcontrol"));
+    }
+    function getInhabilitar($id) {
+                
+        DB::update("UPDATE bdp_categoria SET cat_activo = 0, cat_deleted_at = CURRENT_TIMESTAMP WHERE cat_id = ?",
+                array($id));
+        Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
+        return redirect(url("panelcontrol"));
+    }
+    function getHabilitar($id) {
+                
+        DB::update("UPDATE bdp_categoria SET cat_activo = 1 WHERE cat_id = ?",
+                array($id));
+        Session::flash("habilitar", "Se ha habilitado exitosamente");
         return redirect(url("panelcontrol"));
     }
 }

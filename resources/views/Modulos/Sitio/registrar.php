@@ -9,13 +9,13 @@
                     <div id="box-panel">
                         <form action="<?php echo url("home/sitio/registrar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="sitio[nombre]">Sitio</label>
-                                <input required type="text" id="sitio[nombre]" name="sitio[nombre]" class="form-control" placeholder="Nombre sitio">
+                                <label for="nombre">Sitio</label>
+                                <input required type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre sitio">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Categoría:</label>
                                 <div class="">
-                                    <select required id="sitio[categoria]" name="sitio[categoria]">
+                                    <select required id="categoria" name="categoria">
                                         <?php foreach ($categorias as $categoria): ?>
                                             <option value="<?php echo $categoria->cat_id ?>"><?php echo $categoria->cat_nombre ?></option>
                                         <?php endforeach ?>
@@ -23,24 +23,24 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="sitio[direccion]">Direccion</label>
-                                <input required type="text" id="sitio[direccion]" name="sitio[direccion]" class="form-control" placeholder="Direccion">
+                                <label for="direccion">Direccion</label>
+                                <input required type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion">
                             </div>
                             <div class="form-group">
-                                <label for="sitio[telefono]">Telefono</label>
-                                <input required type="number" id="sitio[telefono]" name="sitio[telefono]" class="form-control" placeholder="Telefono">
+                                <label for="telefono">Telefono</label>
+                                <input required type="number" id="telefono" name="telefono" class="form-control" placeholder="Telefono">
                             </div>
 
                             <div class="form-group">
-                                <label for="sitio[descripcion]" class="control-label">Descripcion:</label>
+                                <label for="descripcion" class="control-label">Descripcion:</label>
                                 <div class="">
-                                    <textarea required id="sitio[descripcion]" name="sitio[descripcion]" class="form-control" rows="5" id="comment"></textarea>
+                                    <textarea required id="descripcion" name="descripcion" class="form-control" rows="5" id="comment"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Imagen</label>
                                 <input required type="file" id="imagen" name="imagen">
-                                <p class="help-block">Example block-level help text here.</p>
+                                <p class="help-block">Sube tu imagen</p>
                             </div>
                             <div class="form-group">
                                 <div class="">

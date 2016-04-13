@@ -114,7 +114,15 @@ class SitioController extends Controller
         DB::update("UPDATE bdp_sitio SET est_id = 2, sit_deleted_at = CURRENT_TIMESTAMP WHERE sit_id = ?",
                 array($id));
         
-        Session::flash("Inhabilitar", "Se ha inhabilitado exitosamente");
+        Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
+        return redirect(url("panelcontrol"));
+    }
+    function getHabilitar($id) {
+               
+        DB::update("UPDATE bdp_sitio SET est_id = 1 WHERE sit_id = ?",
+                array($id));
+        
+        Session::flash("habilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
     }
 }

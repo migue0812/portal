@@ -4,6 +4,15 @@
 <section class="main container">
   <div class="row">
     <div class="jumbotron boxuser">
+         <?php if ($errors->any()): ?>
+                         <div class="alert alert-danger alert-dismissible center-block" role="alert">
+                             <ul>
+                              <?php foreach ($errors->all() as $error): ?>  
+                                 <li><?php echo $error ?></li>
+                                 <?php endforeach ?>
+                             </ul>
+                         </div>
+                        <?php endif ?>
       <form class="form-horizontal" method="post" action="<?php echo url("seguridad/registro") ?>">
         <div class="form-group redSocial-titulo">
           <label class="control-label">Regístrate con:</label>
@@ -16,55 +25,55 @@
         <div class="form-group">
           <label class="control-label col-xs-3">Nombre:</label>
           <div class="col-xs-9">
-            <input required type="text" class="form-control" placeholder="Nombre" id="registro[nombre]" name="registro[nombre]">
+            <input required type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-xs-3">Apellidos:</label>
           <div class="col-xs-9">
-            <input required type="text" class="form-control" placeholder="Apellidos" id="registro[apellidos]" name="registro[apellidos]">
+            <input required type="text" class="form-control" placeholder="Apellidos" id="apellidos" name="apellidos">
           </div>
         </div> 
         <div class="form-group">
           <label class="control-label col-xs-3">Usuario:</label>
           <div class="col-xs-9">
-            <input required type="text" class="form-control" placeholder="Usuario" id="nick" name="registro[nick]">
+            <input required type="text" class="form-control" placeholder="Usuario" id="nick" name="nick">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-xs-3">Password:</label>
           <div class="col-xs-9">
-            <input required type="password" class="form-control" placeholder="Password" id="registro[password]" name="registro[password]">
+            <input required type="password" class="form-control" placeholder="Contraseña" id="password" name="password">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-xs-3">Confirmar Password:</label>
           <div class="col-xs-9">
-            <input required type="password" class="form-control" placeholder="Confirmar Password" id="registro[password2]" name="registro[password2]">
+            <input required type="password" class="form-control" placeholder="Confirmar Contraseña" id="password_confirmation" name="password_confirmation">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-xs-3">Email:</label>
           <div class="col-xs-9">
-            <input required type="email" class="form-control" placeholder="Email" id="registro[email]" name="registro[email]">
+            <input required type="email" class="form-control" placeholder="Email" id="email" name="email">
           </div>
         </div>                             
         <div class="form-group">
           <label class="control-label col-xs-3">Fecha de Nacimiento:</label>
           <div class="col-xs-9">
-            <input required type="date" class="form-control" id="registro[fecha]" name="registro[fecha]">
+            <input required type="date" class="form-control" id="fecha" name="fecha">
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-xs-3">Genero:</label>
+          <label class="control-label col-xs-3">Género:</label>
           <div class="col-xs-2">
             <label class="radio-inline">
-              <input required type="radio" name="registro[genero]" value="M" id="registro[generoM]">Maculino
+              <input required type="radio" name="genero" value="M" id="generoM">Maculino
             </label>
           </div>
           <div class="col-xs-2">
             <label class="radio-inline">
-              <input required type="radio" name="registro[genero]" value="F" id="registro[generoF]">Femenino
+              <input required type="radio" name="genero" value="F" id="generoF">Femenino
             </label>
           </div>
         </div>
@@ -78,7 +87,7 @@
         <div class="form-group">
           <div class="col-xs-offset-3 col-xs-9">
             <label class="checkbox-inline">
-              <input type="checkbox" value="agree">Acepto <a href="#">Terminos y Condiciones</a>.
+              <input type="checkbox" value="agree">Acepto <a href="#">Términos y Condiciones</a>.
             </label>
           </div>
         </div>

@@ -40,7 +40,7 @@ class SitioController extends Controller
         copy($sitioRuta, $sitioDest);
         
         $reglas = array(
-            "nombre"  => "required | max:40",
+            "nombre"  => "required | max:40 | unique:bdp_sitio,sit_nombre",
             "direccion" => "required | max:20",
             "telefono" => "required | integer | min:7",
             "descripcion" => "required | min:30" ,
@@ -48,16 +48,17 @@ class SitioController extends Controller
         );
         
         $mensajes = [
-            "nombre.required" => "El campo nombre debe ser obligarorio",
-            "nombre.max" => "El campo nombre debe tener máximo 40 caracteres",
-            "direccion.required" => "El campo dirección debe ser obligarorio",
-            "direccion.max" => "El campo dirección debe tener máximo 20 caracteres",
-            "telefono.required" => "El campo teléfono debe ser obligarorio",
-            "telefono.min" => "El campo teléfono debe tener minímo 7 caracteres",
-            "telefono.int" => "El campo teléfono debe ser un valor numérico",
-            "descripcion.required" => "El campo descripción debe ser obligarorio",
-            "descripcion.min" => "El campo descripción debe tener minímo 30 caracteres",
-            "imagen.image" => "El campo imagen debe contener una imagen",
+            "nombre.required" => "El campo 'nombre' debe ser obligarorio",
+            "nombre.max" => "El campo 'nombre' debe tener máximo 40 caracteres",
+            "nombre.unique" => "El nombre "."'".$sitNombre."'"." ya existe en la base de datos",
+            "direccion.required" => "El campo 'dirección' debe ser obligarorio",
+            "direccion.max" => "El campo 'dirección' debe tener máximo 20 caracteres",
+            "telefono.required" => "El campo 'teléfono' debe ser obligarorio",
+            "telefono.min" => "El campo 'teléfono' debe tener minímo 7 caracteres",
+            "telefono.int" => "El campo 'teléfono' debe ser un valor numérico",
+            "descripcion.required" => "El campo 'descripción' debe ser obligarorio",
+            "descripcion.min" => "El campo 'descripción' debe tener minímo 30 caracteres",
+            "imagen.image" => "El campo 'imagen' debe contener una imagen",
         ];
         
     $validacion = Validator::make($_POST, $reglas, $mensajes);

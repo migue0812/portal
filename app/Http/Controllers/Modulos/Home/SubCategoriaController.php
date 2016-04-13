@@ -27,14 +27,15 @@ function postRegistrar(){
         
         
         $reglas = array(
-            "nombre" => "required | max:40",
+            "nombre" => "required | max:40 | unique:bdp_subcategoria,subcat_nombre",
             "categoria" => "required" ,
         );
         
         $mensajes = [
-            "nombre.required" => "El campo nombre debe ser obligarorio",
-            "nombre.max" => "El campo nombre debe tener máximo 40 caracteres",
-            "categoria.required" => "El campo categoría debe ser obligarorio",
+            "nombre.required" => "El campo 'nombre' debe ser obligarorio",
+            "nombre.max" => "El campo 'nombre' debe tener máximo 40 caracteres",
+            "nombre.unique" => "El nombre "."'".$subCatNombre."'"." ya existe en la base de datos",
+            "categoria.required" => "El campo 'categoría' debe ser obligarorio",
         ];
         
     $validacion = Validator::make($_POST, $reglas, $mensajes);

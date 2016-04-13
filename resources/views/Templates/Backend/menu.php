@@ -22,7 +22,7 @@
                     <a class="enlace-menu" href="<?php echo url("home/subcategoria/registrar") ?>"><i class="fa fa-fw fa-file-code-o"></i> Crear</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-eye"></i> Listar</a>
+                    <a class="enlace-menu" href="<?php echo url("home/subcategoria/listar") ?>"><i class="fa fa-fw fa-eye"></i> Listar</a>
                 </li>
             </ul>
         </li>

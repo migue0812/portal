@@ -7,15 +7,16 @@
             <section class="">
                 <div class="box">
                     <div id="box-panel">
-                        <form action="<?php echo url("home/subcategoria/registrar") ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo url("home/subcategoria/editar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="nombre">Subcategoria :</label>
-                                <input required type="text" id="nombre" name="nombre" class="form-control" placeholder="Subcategoria">
+                                <input required type="text" id="nombre" name="nombre" class="form-control" placeholder="Subcategoria" value="<?php echo $subcategorias->subcat_nombre ?>">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Categoría :</label>
                                 <div class="">
                                     <select required id="categoria" name="categoria">
+                                        <option value="<?php echo $subcategorias->subcat_nombre ?>"><?php echo $subcategorias->cat_nombre ?></option>
                                         <?php foreach ($categorias as $categoria): ?>
                                             <option value="<?php echo $categoria->cat_id ?>"><?php echo $categoria->cat_nombre ?></option>
                                         <?php endforeach ?>

@@ -38,14 +38,14 @@ class CategoriaController extends Controller
         copy($categoriaRuta, $categoriaDest);
         
         $reglas = array(
-            "nombre" => "required | max:20",
+            "nombre" => "required | max:30",
             "descripcion" => "required | min:30" ,
             "imagen" => "image"
         );
         
         $mensajes = [
             "nombre.required" => "El campo nombre debe ser obligarorio",
-            "nombre.max" => "El campo nombre debe tener máximo 20 caracteres",
+            "nombre.max" => "El campo nombre debe tener máximo 30 caracteres",
             "descripcion.required" => "El campo descripción debe ser obligarorio",
             "descripcion.min" => "El campo descripción debe tener mínimo 30 caracteres",
             "imagen.image" => "El campo imagen debe contener una imagen",

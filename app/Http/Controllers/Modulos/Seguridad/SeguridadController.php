@@ -12,13 +12,19 @@ use Illuminate\Support\Facades\Validator;
 class SeguridadController extends Controller {
 
     function getLogin() {
-        return view('Modulos.Seguridad.login');
+        if ((Session::has("usuarioLogueado")) || (Session::has("usuarioAdmin"))){
+            return view('Modulos.Home.index');
+        } else {
+            return view('Modulos.Seguridad.login');
+        }
     }
-
     function getRegistro() {
+        if ((Session::has("usuarioLogueado")) || (Session::has("usuarioAdmin"))){
+            return view('Modulos.Home.index');
+        } else {
         return view('Modulos.Seguridad.registro');
     }
-
+    }
     function postRegistro() {
 
         //$registro = filter_input_array(INPUT_POST)['registro'];

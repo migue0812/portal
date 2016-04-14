@@ -23,9 +23,14 @@ class SitioController extends Controller
     	return view('Modulos.Home.sitioDet', compact('sitDetalle'));
     }
     function getRegistrar(){
-        $categorias = DB::select("SELECT * FROM bdp_categoria");
+        if (Session::has("usuarioAdmin")){
+            $categorias = DB::select("SELECT * FROM bdp_categoria");
     	return view('Modulos.Sitio.registrar', compact("categorias"));
-            }
+        } else {
+            return view('Modulos.Home.index');
+        }
+    }
+        
     function postRegistrar(){
         //$sitio = filter_input_array(INPUT_POST)['sitio'];
         $sitNombre = $_POST["nombre"];
@@ -86,18 +91,26 @@ class SitioController extends Controller
     	
             }
             function getListar(){
-        $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_estado WHERE bdp_sitio.est_id=bdp_estado.est_id");
+                if (Session::has("usuarioAdmin")){
+            $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_estado WHERE bdp_sitio.est_id=bdp_estado.est_id");
     	return view('Modulos.Sitio.listar', compact("sitios"));
+        } else {
+            return view('Modulos.Home.index');
+        }  	
     }
     
     function getEditar($id) {
-        $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen WHERE bdp_sitio.sit_id = ? "
+        if (Session::has("usuarioAdmin")){
+            $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen WHERE bdp_sitio.sit_id = ? "
                 . "AND bdp_imagen.sit_id = bdp_sitio.sit_id",
                 array($id));
         $sitios = $sitios[0];
                       
         return view('Modulos.Sitio.editar', compact("sitios"));
-}
+        } else {
+            return view('Modulos.Home.index');
+        }	
+    }
 
  function postEditar() {
         $sitio = filter_input_array(INPUT_POST)['sitio'];
@@ -111,19 +124,25 @@ class SitioController extends Controller
         return redirect(url("panelcontrol"));
     }
     function getInhabilitar($id) {
-               
-        DB::update("UPDATE bdp_sitio SET est_id = 2, sit_deleted_at = CURRENT_TIMESTAMP WHERE sit_id = ?",
+        if (Session::has("usuarioAdmin")){
+            DB::update("UPDATE bdp_sitio SET est_id = 2, sit_deleted_at = CURRENT_TIMESTAMP WHERE sit_id = ?",
                 array($id));
         
         Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
-    }
+        } else {
+            return view('Modulos.Home.index');
+        }  	
+    }     
     function getHabilitar($id) {
-               
-        DB::update("UPDATE bdp_sitio SET est_id = 1 WHERE sit_id = ?",
+               if (Session::has("usuarioAdmin")){
+             DB::update("UPDATE bdp_sitio SET est_id = 1 WHERE sit_id = ?",
                 array($id));
         
         Session::flash("habilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
+        } else {
+            return view('Modulos.Home.index');
+        } 	
     }
 }

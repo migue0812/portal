@@ -27,7 +27,7 @@
                 <p></p>
                 <?php if (Session::has("usuarioLogueado")):?>
                   <div class="city-social">
-                    <a class="icon-add-to-list btn " href=""> Itinerario</a>
+                    <a class="icon-add-to-list btn " href="<?php echo url("itinerario/sitio/" . $sitDetalle->sit_id) ?>"> Itinerario</a>
                     <a class="icon-share-alternitive btn "> Compartir</a>
                     <a class="icon-add-to-list btn icon-thumbs-up "></a>
                   </div>
@@ -35,21 +35,21 @@
                 <section class="groups">
                   <ul>
                     <li>
-                      <a href="/explore/shopping/antiques">
+                      <a href="">
                         <span class="Apple-style-span">
                           Dirección: <?php echo $sitDetalle->sit_direccion ?>
                         </span>
                       </a>
                     </li>
                     <li>
-                      <a href="/explore/shopping/antiques">
+                      <a href="">
                         <span class="Apple-style-span">
                           Teléfono: <?php echo $sitDetalle->sit_telefono ?>
                         </span>
                       </a>
                     </li>
                     <li>
-                      <a href="/explore/shopping/antiques">
+                      <a href="">
                         <span class="Apple-style-span">
                           Correo
                         </span>

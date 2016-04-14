@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 
 use Portal\Http\Requests;
 use Portal\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class PanelControlController extends Controller
 {
     function getIndex(){
-    	return view('Modulos.PanelControl.index');
+        if (Session::has("usuarioAdmin")){
+            return view('Modulos.PanelControl.index');
+        } else {
+            return view('Modulos.Home.index');
+        }
+    	
     }
 }

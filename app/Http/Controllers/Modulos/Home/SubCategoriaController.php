@@ -54,12 +54,17 @@ function postRegistrar(){
     }
     
      function getListar(){
-        $subcategorias = DB::select("SELECT * FROM bdp_subcategoria");
+         if (Session::has("usuarioAdmin")){
+           $subcategorias = DB::select("SELECT * FROM bdp_subcategoria");
     	return view('Modulos.SubCategoria.listar', compact("subcategorias"));
+        } else {
+            return view('Modulos.Home.index');
+        }	
     }
     
     function getEditar($id) {
-        $subcategorias = DB::select("SELECT * FROM bdp_subcategoria, bdp_categoria WHERE subcat_id = ? "
+        if (Session::has("usuarioAdmin")){
+            $subcategorias = DB::select("SELECT * FROM bdp_subcategoria, bdp_categoria WHERE subcat_id = ? "
                 . "AND bdp_subcategoria.cat_id=bdp_categoria.cat_id",
                 array($id));
         $subcategorias = $subcategorias[0];
@@ -67,6 +72,9 @@ function postRegistrar(){
         $categorias = DB::select("SELECT * FROM bdp_categoria");
         
         return view('Modulos.SubCategoria.editar', compact("subcategorias"), compact("categorias"));
+        } else {
+            return view('Modulos.Home.index');
+        }	
     }
     
     function postEditar() {
@@ -78,17 +86,24 @@ function postRegistrar(){
         return redirect(url("panelcontrol"));
     }
     function getInhabilitar($id) {
-                
-        DB::update("UPDATE bdp_subcategoria SET subcat_activo = 0, subcat_deleted_at = CURRENT_TIMESTAMP WHERE subcat_id = ?",
+                if (Session::has("usuarioAdmin")){
+            DB::update("UPDATE bdp_subcategoria SET subcat_activo = 0, subcat_deleted_at = CURRENT_TIMESTAMP WHERE subcat_id = ?",
                 array($id));
         Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
+        } else {
+            return view('Modulos.Home.index');
+        }	
     }
+    
     function getHabilitar($id) {
-                
-        DB::update("UPDATE bdp_subcategoria SET subcat_activo = 1 WHERE subcat_id = ?",
+                if (Session::has("usuarioAdmin")){
+            DB::update("UPDATE bdp_subcategoria SET subcat_activo = 1 WHERE subcat_id = ?",
                 array($id));
         Session::flash("habilitar", "Se ha habilitado exitosamente");
         return redirect(url("panelcontrol"));
+        } else {
+            return view('Modulos.Home.index');
+        }	
     }
 }

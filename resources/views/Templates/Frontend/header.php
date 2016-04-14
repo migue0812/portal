@@ -2,6 +2,7 @@
     <nav class="navmain">
         <div class="jumbotron jumbotron-header">
             <div class="container">
+                <?php include ("/../../Templates/Frontend/traductor.php") ?>
                 <div class="nav-header">
                     <h1><a href="" title="BugaTurismo" rel="home">TU BUGA</a></h1>
                     <p class="subtitulo">Ciudad Para Todos</p>

@@ -68,7 +68,7 @@
           <label class="control-label col-xs-3">Género:</label>
           <div class="col-xs-2">
             <label class="radio-inline">
-              <input required type="radio" name="genero" value="M" id="generoM">Maculino
+              <input required type="radio" name="genero" value="M" id="generoM">Masculino
             </label>
           </div>
           <div class="col-xs-2">

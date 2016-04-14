@@ -41,7 +41,7 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#menuFour"><i class="fa fa-fw fa-edit"></i> Eventos <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="menuFour" class="collapse">
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-file"></i> Crear</a>
+                    <a class="enlace-menu" href="<?php echo url("home/evento/registrar") ?>"><i class="fa fa-fw fa-file"></i> Crear</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-fw fa-eye"></i> Listar</a>

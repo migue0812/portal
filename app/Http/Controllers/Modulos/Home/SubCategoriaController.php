@@ -78,10 +78,30 @@ function postRegistrar(){
     }
     
     function postEditar() {
-        $categoria = filter_input_array(INPUT_POST)['categoria'];
+       $subCatNombre = $_POST["nombre"];
+        $subCatCategoria = $_POST["categoria"];
+        $subCatId = $_POST["id"];
         
-        DB::update("UPDATE bdp_categoria SET cat_nombre = ?, cat_descripcion = ?, cat_updated_at = CURRENT_TIMESTAMP WHERE cat_id = ?",
-                array($categoria["nombre"], $categoria["descripcion"], $categoria["id"]));
+       $reglas = array(
+            "nombre" => "required | max:40",
+            "categoria" => "required" ,
+        );
+        
+        $mensajes = [
+            "nombre.required" => "El campo 'nombre' debe ser obligarorio",
+            "nombre.max" => "El campo 'nombre' debe tener máximo 40 caracteres",
+            "categoria.required" => "El campo 'categoría' debe ser obligarorio",
+        ];
+        
+    $validacion = Validator::make($_POST, $reglas, $mensajes);
+        
+        if($validacion->fails()){
+           return redirect(url('panelcontrol')) 
+                   ->withErrors($validacion->errors());
+        }
+        
+        DB::update("UPDATE bdp_subcategoria SET subcat_nombre = ?, cat_id = ?, subcat_updated_at = CURRENT_TIMESTAMP WHERE subcat_id = ?",
+                array($subCatNombre, $subCatCategoria, $subCatId));
         Session::flash("editar", "Edición Exitosa");
         return redirect(url("panelcontrol"));
     }

@@ -12,16 +12,28 @@ use Illuminate\Support\Facades\Session;
 class ItinerarioController extends Controller
 {
     function getIndex(){
+        if (Session::has("usuarioLogueado")){
     	return view('Modulos.Itinerario.itinerario');
+    } else {
+            return view('Modulos.Home.index');
+        }
     }
     function getSitios(){
+        if (Session::has("usuarioLogueado")){
         $idUsuario = Session::get("usuarioId");
         $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_itinerario WHERE bdp_sitio.sit_id=bdp_itinerario.sit_id "
                 . "AND bdp_itinerario.usu_id=$idUsuario");
     	return view('Modulos.Itinerario.sitios', compact("sitios"));
+    } else {
+            return view('Modulos.Home.index');
+        }
     }
     function getEventos(){
+        if (Session::has("usuarioLogueado")){
     	return view('Modulos.Itinerario.eventos');
+    }else {
+            return view('Modulos.Home.index');
+        }
     }
     
     function getSitio($id) {

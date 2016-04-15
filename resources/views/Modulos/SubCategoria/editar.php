@@ -16,16 +16,17 @@
                                 <label class="control-label">Categoría :</label>
                                 <div class="">
                                     <select required id="categoria" name="categoria">
-                                        <option value="<?php echo $subcategorias->subcat_nombre ?>"><?php echo $subcategorias->cat_nombre ?></option>
+                                        <option value="<?php echo $subcategorias->cat_id ?>"><?php echo $subcategorias->cat_nombre ?></option>
                                         <?php foreach ($categorias as $categoria): ?>
                                             <option value="<?php echo $categoria->cat_id ?>"><?php echo $categoria->cat_nombre ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
                             </div>
+                            <input type="hidden" value="<?php echo $subcategorias->subcat_id ?>" name="id" id="id">
                             <div class="form-group">
                                 <div class="">
-                                    <input type="submit" class="btn btn-default" value="Crear">
+                                    <input type="submit" class="btn btn-default" value="Editar">
                                     <a class="btn btn-default btn-cancel" value="Guardar" href="<?php echo url("home/index") ?>">Cancelar</a>
                                 </div>
                             </div>

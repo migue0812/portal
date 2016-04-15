@@ -32,7 +32,6 @@ class SitioController extends Controller
     }
         
     function postRegistrar(){
-        //$sitio = filter_input_array(INPUT_POST)['sitio'];
         $sitNombre = $_POST["nombre"];
         $sitCategoria = $_POST["categoria"];
         $sitDireccion = $_POST["direccion"];
@@ -101,24 +100,58 @@ class SitioController extends Controller
     
     function getEditar($id) {
         if (Session::has("usuarioAdmin")){
-            $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen WHERE bdp_sitio.sit_id = ? "
-                . "AND bdp_imagen.sit_id = bdp_sitio.sit_id",
+            $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen, bdp_categoria WHERE bdp_sitio.sit_id = ? "
+                . "AND bdp_imagen.sit_id = bdp_sitio.sit_id AND bdp_sitio.cat_id=bdp_categoria.cat_id",
                 array($id));
         $sitios = $sitios[0];
+        $categorias = DB::select("SELECT * FROM bdp_categoria");
                       
-        return view('Modulos.Sitio.editar', compact("sitios"));
+        return view('Modulos.Sitio.editar', compact("sitios"), compact("categorias"));
         } else {
             return view('Modulos.Home.index');
         }	
     }
 
  function postEditar() {
-        $sitio = filter_input_array(INPUT_POST)['sitio'];
+     $sitNombre = $_POST["nombre"];
+        $sitCategoria = $_POST["categoria"];
+        $sitDireccion = $_POST["direccion"];
+        $sitTelefono = $_POST["telefono"];
+        $sitDescripcion = $_POST["descripcion"];
+        $sitId = $_POST["id"];
+        
+        $reglas = array(
+            "nombre"  => "required | max:40",
+            "direccion" => "required | max:40",
+            "telefono" => "required | integer | min:7",
+            "descripcion" => "required | min:30" ,
+            "imagen" => "image"
+        );
+        
+        $mensajes = [
+            "nombre.required" => "El campo 'nombre' debe ser obligarorio",
+            "nombre.max" => "El campo 'nombre' debe tener máximo 40 caracteres",
+            "direccion.required" => "El campo 'dirección' debe ser obligarorio",
+            "direccion.max" => "El campo 'dirección' debe tener máximo 40 caracteres",
+            "telefono.required" => "El campo 'teléfono' debe ser obligarorio",
+            "telefono.min" => "El campo 'teléfono' debe tener minímo 7 caracteres",
+            "telefono.integer" => "El campo 'teléfono' debe ser un valor numérico",
+            "descripcion.required" => "El campo 'descripción' debe ser obligarorio",
+            "descripcion.min" => "El campo 'descripción' debe tener minímo 30 caracteres",
+            "imagen.image" => "El campo 'imagen' debe contener una imagen",
+        ];
+        
+    $validacion = Validator::make($_POST, $reglas, $mensajes);
+        
+        if($validacion->fails()){
+           return redirect(url('panelcontrol')) 
+                   ->withErrors($validacion->errors());
+        }
         
         DB::update("UPDATE bdp_sitio SET sit_nombre = ?, cat_id = ?, sit_direccion = ?, "
                 . "sit_telefono = ?, sit_descripcion = ?, sit_updated_at = CURRENT_TIMESTAMP WHERE sit_id = ?",
-                array($sitio["nombre"], $sitio["categoria"], $sitio["direccion"], 
-                    $sitio["telefono"], $sitio["descripcion"], $sitio["id"]));
+                array($sitNombre, $sitCategoria, $sitDireccion, 
+                    $sitTelefono, $sitDescripcion, $sitId));
         
         Session::flash("editar", "Edición Exitosa");
         return redirect(url("panelcontrol"));

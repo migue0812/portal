@@ -7,16 +7,16 @@
                     <div id="box-panel">
                         <form action="<?php echo url("home/categoria/editar") ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="categoria[nombre]">Categoría</label>
-                                <input type="text" id="categoria[nombre]" name="categoria[nombre]" class="form-control" placeholder="Nombre categoría" value="<?php echo $categorias->cat_nombre ?>">
+                                <label for="nombre">Categoría</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre categoría" value="<?php echo $categorias->cat_nombre ?>">
                             </div>
                               <div class="form-group">
-                                <label for="categoria[descripcion]" class="control-label">Descripcion:</label>
+                                <label for="descripcion" class="control-label">Descripcion:</label>
                                 <div class="">
-                                    <textarea id="categoria[descripcion]" name="categoria[descripcion]" class="form-control" rows="5" id="comment"><?php echo $categorias->cat_descripcion ?></textarea>
+                                    <textarea id="descripcion" name="descripcion" class="form-control" rows="5" id="comment"><?php echo $categorias->cat_descripcion ?></textarea>
                                 </div>
                             </div> 
-                            <input type="hidden" value="<?php echo $categorias->cat_id ?>" name="categoria[id]" id="categoria[id]">
+                            <input type="hidden" value="<?php echo $categorias->cat_id ?>" name="id" id="id">
                             <div class="form-group">
                                 <label for="imagen">Imagen</label>
                                 <input type="file" id="imagen" name="imagen" value="<?php echo $categorias->img_ruta ?>">

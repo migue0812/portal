@@ -5,37 +5,35 @@
         <div id="box-panel">
             <form action="<?php echo url("home/sitio/editar") ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="sitio[nombre]">Sitio</label>
-                    <input type="text" id="sitio[nombre]" name="sitio[nombre]" class="form-control" placeholder="Nombre sitio" value="<?php echo $sitios->sit_nombre ?>">
+                    <label for="nombre">Sitio</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre sitio" value="<?php echo $sitios->sit_nombre ?>">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Categoría:</label>
                     <div class="">
-                        <select id="sitio[categoria]" name="sitio[categoria]">
-                            <option value="1">Cultura y Tradición</option>
-                            <option value="2">Histórico</option>
-                            <option value="3">Ecoturístico</option>
-                            <option value="4">Religioso</option>
-                            <option value="5">Entretenimiento</option>
-                            <option value="6">Deportes</option></select>
+                        <select id="categoria" name="categoria">
+                            <option value="<?php echo $sitios->cat_id ?>"><?php echo $sitios->cat_nombre ?></option>
+                                        <?php foreach ($categorias as $categoria): ?>
+                                            <option value="<?php echo $categoria->cat_id ?>"><?php echo $categoria->cat_nombre ?></option>
+                                        <?php endforeach ?></select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="sitio[direccion]">Direccion</label>
-                    <input type="text" id="sitio[direccion]" name="sitio[direccion]" class="form-control" placeholder="Direccion" value="<?php echo $sitios->sit_direccion ?>">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Dirección" value="<?php echo $sitios->sit_direccion ?>">
                 </div>
                 <div class="form-group">
-                    <label for="sitio[telefono]">Telefono</label>
-                    <input type="number" id="sitio[telefono]" name="sitio[telefono]" class="form-control" placeholder="Telefono" value="<?php echo $sitios->sit_telefono ?>">
+                    <label for="telefono">Teléfono</label>
+                    <input type="number" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" value="<?php echo $sitios->sit_telefono ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="sitio[descripcion]" class="control-label">Descripcion:</label>
+                    <label for="descripcion" class="control-label">Descripción:</label>
                     <div class="">
-                        <textarea id="sitio[descripcion]" name="sitio[descripcion]" class="form-control" rows="5" id="comment"><?php echo $sitios->sit_descripcion ?></textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control" rows="5" id="comment"><?php echo $sitios->sit_descripcion ?></textarea>
                     </div>
                 </div>
-                <input type="hidden" value="<?php echo $sitios->sit_id ?>" name="sitio[id]" id="sitio[id]">
+                <input type="hidden" value="<?php echo $sitios->sit_id ?>" name="id" id="id">
                 <div class="form-group">
                     <label for="">Imagen</label>
                     <input type="file" id="imagen" name="imagen">

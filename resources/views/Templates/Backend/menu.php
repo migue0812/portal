@@ -44,7 +44,7 @@
                     <a class="enlace-menu" href="<?php echo url("home/evento/registrar") ?>"><i class="fa fa-fw fa-file"></i> Crear</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-eye"></i> Listar</a>
+                    <a class="enlace-menu" href="<?php echo url("home/evento/listar") ?>"><i class="fa fa-fw fa-eye"></i> Listar</a>
                 </li>
             </ul>
         </li>

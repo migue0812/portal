@@ -1,3 +1,7 @@
+<?php 
+$categorias = DB::select("SELECT * FROM bdp_categoria");
+?>
+
 <header>
     <nav class="navmain">
         <div class="jumbotron jumbotron-header">
@@ -31,11 +35,9 @@
                         <ul class="dropdown-menu">
                             <li><a href="<?php echo url("home/categoria") ?>">Todas</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Deportes</a></li>
-                            <li><a href="#">Ecoturismo</a></li>
-                            <li><a href="#">Gastronomia</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
+                            <?php foreach ($categorias as $categoria): ?>
+                            <li><a href="<?php echo url("home/categoria/detalle/" . $categoria->cat_id) ?>"><?php echo $categoria->cat_nombre ?></a></li>
+                            <?php endforeach ?>
                         </ul>
                     </li>
                     <div class="emisora pull-right">

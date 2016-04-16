@@ -140,7 +140,7 @@ class CategoriaController extends Controller {
 
     function getHabilitar($id) {
         if (Session::has("usuarioAdmin")) {
-            DB::update("UPDATE bdp_categoria SET cat_activo = 1 WHERE cat_id = ?", array($id));
+            DB::update("UPDATE bdp_categoria SET cat_activo = 1, cat_deleted_at = NULL WHERE cat_id = ?", array($id));
             Session::flash("habilitar", "Se ha habilitado exitosamente");
             return redirect(url("panelcontrol"));
         } else {

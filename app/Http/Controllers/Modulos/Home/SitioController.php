@@ -171,7 +171,7 @@ class SitioController extends Controller {
 
     function getHabilitar($id) {
         if (Session::has("usuarioAdmin")) {
-            DB::update("UPDATE bdp_sitio SET est_id = 1 WHERE sit_id = ?", array($id));
+            DB::update("UPDATE bdp_sitio SET est_id = 1, sit_deleted_at = NULL WHERE sit_id = ?", array($id));
 
             Session::flash("habilitar", "Se ha inhabilitado exitosamente");
             return redirect(url("panelcontrol"));

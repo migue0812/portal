@@ -118,7 +118,7 @@ function postRegistrar(){
     
     function getHabilitar($id) {
                 if (Session::has("usuarioAdmin")){
-            DB::update("UPDATE bdp_subcategoria SET subcat_activo = 1 WHERE subcat_id = ?",
+            DB::update("UPDATE bdp_subcategoria SET subcat_activo = 1, subcat_deleted_at = NULL WHERE subcat_id = ?",
                 array($id));
         Session::flash("habilitar", "Se ha habilitado exitosamente");
         return redirect(url("panelcontrol"));

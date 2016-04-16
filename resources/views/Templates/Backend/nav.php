@@ -79,10 +79,10 @@
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo ' ' . Session::get("usuarioLogueado") ?> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo ' ' . Session::get("usuarioAdmin") ?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        <a href="<?php echo url("home/index") ?>"><i class="fa fa-fw fa-backward"></i> Página Inicio</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
@@ -92,7 +92,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="<?php echo url("seguridad/logout") ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="<?php echo url("seguridad/logout") ?>"><i class="fa fa-fw fa-power-off"></i> Cerrar Sesión</a>
                     </li>
                 </ul>
             </li>

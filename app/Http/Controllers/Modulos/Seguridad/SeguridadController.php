@@ -114,6 +114,7 @@ class SeguridadController extends Controller {
                     return redirect('home/index');
                 } elseif ($verificarUsuario[0]->usu_id === 1) {
                     Session::put("usuarioAdmin", "Admin");
+                    Session::put("usuarioGenero", $verificarUsuario[0]->dus_genero);
                     return redirect('home/index');
            // } 
             }

@@ -83,7 +83,11 @@
 
                     <ul class="nav navbar-nav navbar-right">
                     <?php elseif (Session::has("usuarioAdmin")): ?>
+                        <?php if ((Session::get("usuarioGenero")=== 'M')): ?>
                         <li><a href="#"><img src="<?php echo asset("img/avatar_men_admin.png") ?>" /><?php echo ' ' . Session::get("usuarioAdmin") ?></a></li>
+                        <?php else: ?>
+                       <li><a href="#"><img src="<?php echo asset("img/avatar_women_admin.png") ?>" /><?php echo ' ' . Session::get("usuarioAdmin") ?></a></li>
+                       <?php endif ?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                             <ul class="dropdown-menu">

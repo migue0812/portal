@@ -202,7 +202,7 @@ function getInhabilitar($id) {
     }     
     function getHabilitar($id) {
                if (Session::has("usuarioAdmin")){
-             DB::update("UPDATE bdp_evento SET est_id = 1 WHERE eve_id = ?",
+             DB::update("UPDATE bdp_evento SET est_id = 1, eve_deleted_at = NULL WHERE eve_id = ?",
                 array($id));
         
         Session::flash("habilitar", "Se ha inhabilitado exitosamente");

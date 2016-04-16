@@ -1,45 +1,54 @@
-<?php include ("/../../Templates/Frontend/head.php") ?>
-<?php include ("/../../Templates/Frontend/header.php") ?>
-<br>
-        <div class="container container-fluid">
-            <div class="navBotonera">
-                <a href="<?php echo url("usuario/crear") ?>" class="glyphicon glyphicon-plus-sign btn btn-success btn-lg"> Nuevo</a>
-            </div>
-           
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $count = 1;
-                        foreach ($usuarios as $usuario):
-                            ?>
+<div id="box-panel" class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> Formulario Usuario</h3>
+        </div>
+        <div class="panel-body">
+            <br>
+            <div class="">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
                             <tr>
-                                <td><?php echo $count++ ?></td>
-                                <td><?php echo $usuario->nombre ?></td>
-                                <td><?php echo $usuario->apellidos ?></td>
-                                <td><a href="" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
-                                    <a href="<?php echo url("usuario/editar/".$usuario->id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
-                                    <a href="<?php echo url("usuario/eliminar/".$usuario->id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a></td>
+                                <th>No.</th>
+                                <th>Nick Usuario</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
-                          <?php
-                    endforeach
-                    ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="6" style="text-align: center">Usuarios: <?php echo $count-1 ?></td>
-                        </tr>
-                    </tfoot>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $count = 1;
+                            foreach ($usuarios as $usuario):
+                                ?>
+                                <tr>
+                                    <td><?php echo $count++ ?></td>
+                                    <td><?php echo $usuario->usu_usuario ?></td>
+                                    <?php if ($usuario->usu_activado===0){
+                                        $usuario->usu_activado = "Inhabilitado";
+                                    } else { $usuario->usu_activado = "Habilitado";
+                                    } ?>
+                                    <td><?php echo $usuario->usu_activado ?></td>
+                                    <td><a href="<?php echo url("home/usuario/detalle/" . $usuario->usu_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
+                                        <?php if ($usuario->usu_activado==="Habilitada"): ?>
+                                        <a href="<?php echo url("home/usuario/inhabilitar/" . $usuario->usu_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
+                                        <?php else:?>
+                                        <a href="<?php echo url("home/usuario/habilitar/" . $usuario->usu_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
+                                    <?php endif ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            endforeach
+                            ?>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6" style="text-align: center">Usuarios: <?php echo $count - 1 ?></td>
+                            </tr>
+                        </tfoot>
+                    </table>
 
-            </div></div>
-<?php include ("/../../Templates/Frontend/foot.php") ?>
-<?php include ("/../../Templates/Frontend/footer.php") ?>
+                </div></div>
+        </div> 
+    </div>
+</div>

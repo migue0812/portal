@@ -93,9 +93,9 @@ class SeguridadController extends Controller {
             $user = filter_input_array(INPUT_POST)['login']['user'];
             $password = filter_input_array(INPUT_POST)['login']['password'];
 
-            $verificarUsuario = DB::select("SELECT usu_id FROM bdp_usuario WHERE usu_deleted_at IS NULL "
+            $verificarUsuario = DB::select("SELECT bdp_usuario.usu_id, dus_genero FROM bdp_usuario, bdp_dato_usuario WHERE usu_deleted_at IS NULL "
                             . "AND usu_activado = '1' AND usu_usuario = ? AND "
-                            . "usu_password = ?", array($user, $password));
+                            . "usu_password = ? AND bdp_usuario.usu_id=bdp_dato_usuario.usu_id", array($user, $password));
 
 //            $datosUsuario = DB::select("SELECT bdp_usuario.usu_id AS id, usu_usuario AS usuario, dus_nombre AS nombre, dus_apellidos AS apellidos FROM bdp_usuario "
 //            . "INNER JOIN bdp_dato_usuario ON bdp_usuario.usu_id=bdp_dato_usuario.dus_id WHERE (bdp_usuario.usu_deleted_at "
@@ -110,6 +110,7 @@ class SeguridadController extends Controller {
                 elseif ($verificarUsuario[0]->usu_id !== 1) {
                     Session::put("usuarioLogueado", $user);
                     Session::put("usuarioId", $verificarUsuario[0]->usu_id);
+                    Session::put("usuarioGenero", $verificarUsuario[0]->dus_genero);
                     return redirect('home/index');
                 } elseif ($verificarUsuario[0]->usu_id === 1) {
                     Session::put("usuarioAdmin", "Admin");
@@ -122,6 +123,7 @@ class SeguridadController extends Controller {
     function getLogout() {
         Session::forget("usuarioLogueado");
         Session::forget("usuarioId");
+        Session::forget("usuarioGenero");
         Session::forget("usuarioAdmin");
         return view('Modulos.Home.index');
     }

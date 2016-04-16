@@ -49,7 +49,7 @@
             </ul>
         </li>
         <li>
-            <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Usuarios</a>
+            <a class="enlace-menu" href="<?php echo url("usuario/listar") ?>"><i class="fa fa-fw fa-dashboard"></i> Usuarios</a>
         </li>
         <li>
             <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Configuracion</a>

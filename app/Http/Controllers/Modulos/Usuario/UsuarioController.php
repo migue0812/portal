@@ -15,7 +15,7 @@ use Portal\User;
 class UsuarioController extends Controller {
 
     function getListar() {
-        $usuarios = DB::select("SELECT * FROM usuario");
+        $usuarios = DB::select("SELECT * FROM bdp_usuario");
         return view('Modulos.Usuario.listar', compact("usuarios"));
     }
     function getCrear() {

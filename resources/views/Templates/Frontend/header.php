@@ -64,11 +64,15 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                     <?php elseif (Session::has("usuarioLogueado")): ?>
-                        <li><a href="#"><img src="<?php echo asset("img/avatar.png") ?>" /><?php echo ' ' . Session::get("usuarioLogueado") ?></a></li>
+                        <?php if ((Session::get("usuarioGenero")=== 'M')): ?>
+                        <li><a href="#"><img src="<?php echo asset("img/avatar_men.png") ?>" /><?php echo ' ' . Session::get("usuarioLogueado") ?></a></li>
+                        <?php else: ?>
+                       <li><a href="#"><img src="<?php echo asset("img/avatar_women.png") ?>" /><?php echo ' ' . Session::get("usuarioLogueado") ?></a></li>
+                       <?php endif ?>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="">Mi itinerario</a></li>
+                                <li><a href="<?php echo url("itinerario") ?>">Mi itinerario</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="">Configuración</a></li>
                                 <li role="separator" class="divider"></li>
@@ -79,7 +83,7 @@
 
                     <ul class="nav navbar-nav navbar-right">
                     <?php elseif (Session::has("usuarioAdmin")): ?>
-                        <li><a href="#"><img src="<?php echo asset("img/avatar.png") ?>" /><?php echo ' ' . Session::get("usuarioAdmin") ?></a></li>
+                        <li><a href="#"><img src="<?php echo asset("img/avatar_men_admin.png") ?>" /><?php echo ' ' . Session::get("usuarioAdmin") ?></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                             <ul class="dropdown-menu">

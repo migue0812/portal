@@ -6,5 +6,6 @@
 <script type="text/javascript" src="<?php echo asset("js/main.js") ?>"></script>
 <script type="text/javascript" src="<?php echo asset("js/jquery.slides.js") ?>"></script>
 <script type="text/javascript" src="<?php echo asset("js/funcionMenu.js") ?>"></script>
+<script type="text/javascript" src="<?php echo asset("js/jssor.slider.mini.js") ?>"></script>
 </body>
 </html>

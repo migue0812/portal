@@ -23,6 +23,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label">SubCategoría:</label>
+                                <div class="">
+                                    <select required id="categoria" name="categoria">
+                                        <?php foreach ($subcategorias as $subcategoria): ?>
+                                            <option value="<?php echo $subcategoria->subcat_id ?>"><?php echo $subcategoria->subcat_nombre ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="direccion">Direccion</label>
                                 <input required type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion">
                             </div>

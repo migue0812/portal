@@ -17,10 +17,11 @@ class SitioController extends Controller {
     }
 
     function getDetalle($id) {
+        
         $sitDetalle = DB::select("SELECT * FROM bdp_sitio WHERE sit_id = ?", array($id));
         $sitDetalle = $sitDetalle[0];
         $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen WHERE bdp_imagen.sit_id = bdp_sitio.sit_id");
-
+        $visitas = DB::update("UPDATE bdp_sitio SET sit_visitas = ".(($sitDetalle->sit_visitas)+1));
         return view('Modulos.Home.sitioDet', compact('sitDetalle'), compact("sitios"));
     }
 

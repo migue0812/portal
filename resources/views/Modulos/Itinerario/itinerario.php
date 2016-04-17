@@ -14,6 +14,9 @@
     <?php if (Session::has("sitio")):?>
     <div class="alert alert-success alert-dismissible center-block" role="alert"><?php echo Session::get("sitio") ?></div>
                 <?php endif ?>
+    <?php if (Session::has("sitioExistente")):?>
+    <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("sitioExistente") ?></div>
+                <?php endif ?>
     <!--Termina Miga De Pan-->
     <div class="row">
         <div class="itineraio col-lg-2 col-xs-12 col-sm-3">

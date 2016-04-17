@@ -21,6 +21,7 @@ class ItinerarioController extends Controller
     function getSitios(){
         if (Session::has("usuarioLogueado")){
         $idUsuario = Session::get("usuarioId");
+        
         $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_itinerario WHERE bdp_sitio.sit_id=bdp_itinerario.sit_id "
                 . "AND bdp_itinerario.usu_id=$idUsuario");
     	return view('Modulos.Itinerario.sitios', compact("sitios"));
@@ -39,11 +40,19 @@ class ItinerarioController extends Controller
     function getSitio($id) {
         
         $idUsuario = Session::get("usuarioId");
-               
-        DB::insert("INSERT INTO bdp_itinerario (usu_id, sit_id) VALUES (?,?)",
-                array($idUsuario, $id));
+        $verificar = DB::select("SELECT * FROM bdp_itinerario WHERE sit_id=? AND usu_id=?", 
+                array($id, $idUsuario));
+        if($verificar){
+           Session::flash("sitioExistente", "Ya existe este sitio en el itinerario"); 
+           return redirect(url("itinerario")); 
+        }  else {
+         DB::insert("INSERT INTO bdp_itinerario (usu_id, sit_id, iti_visitado) VALUES (?,?,?)",
+                array($idUsuario, $id, 'No'));
         
         Session::flash("sitio", "Se ha agregado exitosamente el sitio al itinerario");
-        return redirect(url("itinerario"));
+        return redirect(url("itinerario"));   
+        }
+               
+        
     }
 }

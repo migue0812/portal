@@ -28,6 +28,7 @@ Route::controllers([
     'itinerario' => "Modulos\Home\ItinerarioController",
     'seguridad' => "Modulos\Seguridad\SeguridadController",
     'panelcontrol' => "Modulos\Home\PanelControlController",
+    'reporte' => "Modulos\Reporte\ReporteController",
     
 ]);
 

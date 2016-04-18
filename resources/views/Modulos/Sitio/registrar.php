@@ -25,7 +25,7 @@
                             <div class="form-group">
                                 <label class="control-label">SubCategoría:</label>
                                 <div class="">
-                                    <select required id="categoria" name="categoria">
+                                    <select required id="subcategoria" name="subcategoria">
                                         <?php foreach ($subcategorias as $subcategoria): ?>
                                             <option value="<?php echo $subcategoria->subcat_id ?>"><?php echo $subcategoria->subcat_nombre ?></option>
                                         <?php endforeach ?>
@@ -33,16 +33,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="direccion">Direccion</label>
+                                <label for="direccion">Dirección</label>
                                 <input required type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion">
                             </div>
                             <div class="form-group">
-                                <label for="telefono">Telefono</label>
+                                <label for="telefono">Teléfono</label>
                                 <input required type="number" id="telefono" name="telefono" class="form-control" placeholder="Telefono">
                             </div>
 
                             <div class="form-group">
-                                <label for="descripcion" class="control-label">Descripcion:</label>
+                                <label for="descripcion" class="control-label">Descripción:</label>
                                 <div class="">
                                     <textarea required id="descripcion" name="descripcion" class="form-control" rows="5" id="comment"></textarea>
                                 </div>

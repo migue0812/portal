@@ -21,7 +21,7 @@ class SitioController extends Controller {
         $sitDetalle = DB::select("SELECT * FROM bdp_sitio WHERE sit_id = ?", array($id));
         $sitDetalle = $sitDetalle[0];
         $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_imagen WHERE bdp_imagen.sit_id = bdp_sitio.sit_id");
-        $visitas = DB::update("UPDATE bdp_sitio SET sit_visitas = ".(($sitDetalle->sit_visitas)+1));
+        $visitas = DB::update("UPDATE bdp_sitio SET sit_visitas = ".(($sitDetalle->sit_visitas)+1)." WHERE sit_id = ?", array($id));
         return view('Modulos.Home.sitioDet', compact('sitDetalle'), compact("sitios"));
     }
 
@@ -50,7 +50,7 @@ class SitioController extends Controller {
 
         $reglas = array(
             "nombre" => "required | max:40 | unique:bdp_sitio,sit_nombre",
-            "direccion" => "required | max:30",
+            "direccion" => "required | max:40",
             "telefono" => "required | integer | min:7",
             "descripcion" => "required | min:30",
             "imagen" => "image"
@@ -61,7 +61,7 @@ class SitioController extends Controller {
             "nombre.max" => "El campo 'nombre' debe tener máximo 40 caracteres",
             "nombre.unique" => "El nombre " . "'" . $sitNombre . "'" . " ya existe en la base de datos",
             "direccion.required" => "El campo 'dirección' debe ser obligarorio",
-            "direccion.max" => "El campo 'dirección' debe tener máximo 30 caracteres",
+            "direccion.max" => "El campo 'dirección' debe tener máximo 40 caracteres",
             "telefono.required" => "El campo 'teléfono' debe ser obligarorio",
             "telefono.min" => "El campo 'teléfono' debe tener minímo 7 caracteres",
             "telefono.integer" => "El campo 'teléfono' debe ser un valor numérico",
@@ -79,7 +79,7 @@ class SitioController extends Controller {
 
         DB::insert("INSERT INTO bdp_sitio (sit_nombre, sit_descripcion, "
                 . "cat_id, id_subcat, sit_direccion, sit_telefono, sit_latitud, sit_longitud,"
-                . "est_id, usu_id) VALUES (?,?,?,?,?,?,?,?,?)", array($sitNombre,
+                . "est_id, usu_id) VALUES (?,?,?,?,?,?,?,?,?,?)", array($sitNombre,
             $sitDescripcion, $sitCategoria, $sitSubCategoria, $sitDireccion,
             $sitTelefono, 101010101010, 1100110011, 1, 1));
 

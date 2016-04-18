@@ -52,7 +52,43 @@ class ItinerarioController extends Controller
         Session::flash("sitio", "Se ha agregado exitosamente el sitio al itinerario");
         return redirect(url("itinerario"));   
         }
-               
-        
     }
+    function getSitiovisitado($id) {
+        if (Session::has("usuarioLogueado")) {
+            $idUsuario = Session::get("usuarioId");
+            DB::update("UPDATE bdp_itinerario SET iti_visitado = 'Si', "
+                    . "iti_updated_at = CURRENT_TIMESTAMP WHERE sit_id = ? AND usu_id = ?", 
+                    array($id, $idUsuario));
+
+            Session::flash("sitioVisitado", "El sitio ha sido visitado");
+            return redirect(url("itinerario"));
+        } else {
+            return view('Modulos.Home.index');
+        }
+}
+function getSitionovisitado($id) {
+        if (Session::has("usuarioLogueado")) {
+            $idUsuario = Session::get("usuarioId");
+            DB::update("UPDATE bdp_itinerario SET iti_visitado = 'No', "
+                    . "iti_updated_at = CURRENT_TIMESTAMP WHERE sit_id = ? AND usu_id = ?", 
+                    array($id, $idUsuario));
+
+            Session::flash("sitioNoVisitado", "El sitio no ha sido visitado");
+            return redirect(url("itinerario"));
+        } else {
+            return view('Modulos.Home.index');
+        }
+}
+function getSitioeliminar($id) {
+        if (Session::has("usuarioLogueado")) {
+            $idUsuario = Session::get("usuarioId");
+            DB::delete("DELETE FROM bdp_itinerario WHERE sit_id = ? AND usu_id = ?", 
+                    array($id, $idUsuario));
+
+            Session::flash("sitioEliminado", "Se ha eliminado el sitio del itinerario");
+            return redirect(url("itinerario"));
+        } else {
+            return view('Modulos.Home.index');
+        }
+}
 }

@@ -17,6 +17,16 @@
     <?php if (Session::has("sitioExistente")):?>
     <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("sitioExistente") ?></div>
                 <?php endif ?>
+     <?php if (Session::has("sitioVisitado")):?>
+    <div class="alert alert-info alert-dismissible center-block" role="alert"><?php echo Session::get("sitioVisitado") ?></div>
+                <?php endif ?>
+     <?php if (Session::has("sitioNoVisitado")):?>
+    <div class="alert alert-warning alert-dismissible center-block" role="alert"><?php echo Session::get("sitioNoVisitado") ?></div>
+                <?php endif ?>
+    <?php if (Session::has("sitioEliminado")):?>
+    <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("sitioEliminado") ?></div>
+                <?php endif ?>
+    
     <!--Termina Miga De Pan-->
     <div class="row">
         <div class="itineraio col-lg-2 col-xs-12 col-sm-3">
@@ -28,11 +38,8 @@
                 </div>
             </aside>
         </div>
-        <div id="tablaMenu" class="col-lg-8 col-xs-12 col-sm-9">
-        
-           
+        <div id="tablaMenu" class="col-lg-8 col-xs-12 col-sm-9">   
         </div>
-
     </div>  
 
 </section>

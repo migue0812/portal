@@ -21,61 +21,18 @@
     </main>
     <div class="container">
       <div class="row contenido">
+          <?php foreach ($sitios as $sitio): ?>
         <figure class="col-xs-12 col-sm-6 col-md-4">
           <div class="contenedor-img fx">  
-            <img class="img-contenido img-responsive" src="<?php echo asset("img/uno.jpg") ?>" alt="Imagen" />  
+            <img class="img-contenido img-responsive" src="<?php echo asset("$sitio->img_ruta") ?>" alt="Imagen" />  
             <div class="mascara">
-              <h2>Restaurante Omg</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tortor diam in ullamcorper malesuada.</p>
-              <a class="link" href="">Leer mas</a>
+              <h2><?php echo ($sitio->sit_nombre) ?></h2>
+              <p><?php echo ((strlen($sitio->sit_descripcion) > 100) ? substr(($sitio->sit_descripcion), 0, 100) . " ..." : ($sitio->sit_descripcion)) ?></p>
+              <a class="link" href="<?php echo url("home/sitio/detalle/" . $sitio->sit_id) ?>">Leer mas</a>
             </div>
           </div>
         </figure>
-        <figure class="col-xs-12 col-sm-6 col-md-4">
-          <div class="contenedor-img fx">  
-            <img class="img-contenido img-responsive" src="<?php echo asset("img/dos.jpg") ?>" alt="Imagen" />  
-            <div class="mascara">
-              <h2>Restaurante Omg</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tortor diam in ullamcorper malesuada.</p>
-              <a class="link" href="#">Leer mas</a>
-            </div>
-          </div>
-        </figure><figure class="col-xs-12 col-sm-6 col-md-4">
-          <div class="contenedor-img fx">  
-            <img class="img-contenido img-responsive" src="<?php echo asset("img/tres.jpg") ?>" alt="Imagen" />  
-            <div class="mascara">
-              <h2>Restaurante Omg</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tortor diam in ullamcorper malesuada.</p>
-              <a class="link" href="#">Leer mas</a>
-            </div>
-          </div>
-        </figure><figure class="col-xs-12 col-sm-6 col-md-4">
-          <div class="contenedor-img fx">  
-            <img class="img-contenido img-responsive" src="<?php echo asset("img/cuatro.jpg") ?>" alt="Imagen" />  
-            <div class="mascara">
-              <h2>Restaurante Omg</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tortor diam in ullamcorper malesuada.</p>
-              <a class="link" href="#">Leer mas</a>
-            </div>
-          </div>
-        </figure><figure class="col-xs-12 col-sm-6 col-md-4">
-          <div class="contenedor-img fx">  
-            <img class="img-contenido img-responsive " src="<?php echo asset("img/cinco.jpg") ?>" alt="Imagen" />  
-            <div class="mascara">
-              <h2>Restaurante Omg</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tortor diam in ullamcorper malesuada.</p>
-              <a class="link" href="#">Leer mas</a>
-            </div>
-          </div>
-        </figure><figure class="col-xs-12 col-sm-6 col-md-4">
-          <div class="contenedor-img fx">  
-            <img class="img-contenido img-responsive" src="<?php echo asset("img/seis.jpg") ?>" alt="Imagen" />  
-            <div class="mascara">
-              <h2>Restaurante Omg</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae tortor diam in ullamcorper malesuada.</p>
-              <a class="link" href="#">Leer mas</a>
-            </div>
-          </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </section>

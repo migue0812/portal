@@ -29,11 +29,11 @@
                                     } else { $usuario->usu_activado = "Habilitado";
                                     } ?>
                                     <td><?php echo $usuario->usu_activado ?></td>
-                                    <td><a href="<?php echo url("usuario/ver/" . $usuario->usu_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
+                                    <td><a title="Ver" href="<?php echo url("usuario/ver/" . $usuario->usu_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
                                         <?php if ($usuario->usu_activado==="Habilitado"): ?>
-                                        <a href="<?php echo url("usuario/inhabilitar/" . $usuario->usu_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
+                                        <a title="Inhabilitar" href="<?php echo url("usuario/inhabilitar/" . $usuario->usu_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
                                         <?php else:?>
-                                        <a href="<?php echo url("usuario/habilitar/" . $usuario->usu_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
+                                        <a title="Habilitar" href="<?php echo url("usuario/habilitar/" . $usuario->usu_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
                                     <?php endif ?>
                                     </td>
                                 </tr>

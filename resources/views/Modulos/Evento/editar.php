@@ -62,7 +62,7 @@
                             <div class="form-group">
                                 <div class="">
                                     <input type="submit" class="btn btn-default" value="Editar">
-                                    <a class="btn btn-default btn-cancel" value="Guardar" href="<?php echo url("home/index") ?>">Cancelar</a>
+                                    <a class="btn btn-default btn-cancel" value="Cancelar" href="<?php echo url("panelcontrol") ?>">Cancelar</a>
                                 </div>
                             </div>
                         </form>

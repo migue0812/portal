@@ -25,12 +25,12 @@
                                     <td><?php echo $count++ ?></td>
                                     <td><?php echo $sitio->sit_nombre ?></td>
                                     <td><?php echo $sitio->est_nombre ?></td>
-                                    <td><a href="<?php echo url("home/sitio/detalle/" . $sitio->sit_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
-                                        <a href="<?php echo url("home/sitio/editar/" . $sitio->sit_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
+                                    <td><a title="Ver" href="<?php echo url("home/sitio/detalle/" . $sitio->sit_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
+                                        <a title="Editar" href="<?php echo url("home/sitio/editar/" . $sitio->sit_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
                                         <?php if ($sitio->est_id===1): ?>
-                                        <a href="<?php echo url("home/sitio/inhabilitar/" . $sitio->sit_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a></td>
+                                        <a title="Inhabilitar" href="<?php echo url("home/sitio/inhabilitar/" . $sitio->sit_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a></td>
                                <?php else:?>
-                                        <a href="<?php echo url("home/sitio/habilitar/" . $sitio->sit_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
+                                        <a title="Habilitar" href="<?php echo url("home/sitio/habilitar/" . $sitio->sit_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
                                     <?php endif ?>
                                 </tr>
                                 <?php

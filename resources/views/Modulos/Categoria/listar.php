@@ -29,12 +29,12 @@
                                     } else { $categoria->cat_activo = "Habilitada";
                                     } ?>
                                     <td><?php echo $categoria->cat_activo ?></td>
-                                    <td><a href="<?php echo url("home/categoria/detalle/" . $categoria->cat_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
-                                        <a href="<?php echo url("home/categoria/editar/" . $categoria->cat_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
+                                    <td><a title="Ver" href="<?php echo url("home/categoria/detalle/" . $categoria->cat_id) ?>" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open"></i></a> 
+                                        <a title="Editar" href="<?php echo url("home/categoria/editar/" . $categoria->cat_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
                                         <?php if ($categoria->cat_activo==="Habilitada"): ?>
-                                        <a href="<?php echo url("home/categoria/inhabilitar/" . $categoria->cat_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
+                                        <a title="Inhabilitar" href="<?php echo url("home/categoria/inhabilitar/" . $categoria->cat_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
                                         <?php else:?>
-                                        <a href="<?php echo url("home/categoria/habilitar/" . $categoria->cat_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
+                                        <a title="Habilitar" href="<?php echo url("home/categoria/habilitar/" . $categoria->cat_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
                                     <?php endif ?>
                                     </td>
                                 </tr>

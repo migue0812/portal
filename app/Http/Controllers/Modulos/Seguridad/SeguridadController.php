@@ -126,7 +126,7 @@ class SeguridadController extends Controller {
         Session::forget("usuarioId");
         Session::forget("usuarioGenero");
         Session::forget("usuarioAdmin");
-        return view('Modulos.Home.index');
+        return redirect('home/index');
     }
 
 }

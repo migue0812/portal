@@ -11,7 +11,6 @@
           <label class="control-label col-xs-3">Apellidos:</label>
               <label class="control-label"><?php echo $usuario->dus_apellidos ?></label>
         </div>
-        <div class="form-group">
           <div class="form-group">
           <label class="control-label col-xs-3">Usuario:</label>
               <label class="control-label"><?php echo $usuario->usu_usuario ?></label>
@@ -31,6 +30,11 @@
               <?php else :?>
               <label class="control-label">Femenino</label>
               <?php endif ?>
+        </div>
+            <div class="form-group">
+          <div class="col-xs-9">
+            <a class="btn btn-default btn-cancel" value="Volver" href="<?php echo url("panelcontrol") ?>">Cancelar</a>
+          </div>
         </div>
     </div>
   </div>

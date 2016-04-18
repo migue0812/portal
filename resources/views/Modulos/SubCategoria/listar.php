@@ -29,11 +29,11 @@
                                     } else { $subcategoria->subcat_activo = "Habilitada";
                                     } ?>
                                     <td><?php echo $subcategoria->subcat_activo ?></td>
-                                    <td><a href="<?php echo url("home/subcategoria/editar/" . $subcategoria->subcat_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
+                                    <td><a title="Editar" href="<?php echo url("home/subcategoria/editar/" . $subcategoria->subcat_id) ?>" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-pencil"></i></a> 
                                         <?php if ($subcategoria->subcat_activo==="Habilitada"): ?>
-                                        <a href="<?php echo url("home/subcategoria/inhabilitar/" . $subcategoria->subcat_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
+                                        <a title="Inhabilitar" href="<?php echo url("home/subcategoria/inhabilitar/" . $subcategoria->subcat_id) ?>" class="btn btn-danger btn-sm"> <i class="glyphicon glyphicon-remove"></i></a>
                                         <?php else:?>
-                                        <a href="<?php echo url("home/subcategoria/habilitar/" . $subcategoria->subcat_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
+                                        <a title="Habilitar" href="<?php echo url("home/subcategoria/habilitar/" . $subcategoria->subcat_id) ?>" class="btn btn-success btn-sm"> <i class="glyphicon glyphicon glyphicon-ok"></i></a>
                                     <?php endif ?>
                                     </td>
                                 </tr>

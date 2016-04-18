@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Validator;
 class EventoController extends Controller
 {
     function getIndex(){
-        $eventos = DB::select("SELECT * FROM bdp_evento");
-    	return view('Modulos.Home.evento', compact('eventos'));
+        $eventos = DB::select("SELECT * FROM bdp_evento, bdp_imagen WHERE bdp_imagen.eve_id = bdp_evento.eve_id "
+                . "ORDER BY bdp_evento.eve_id ASC LIMIT 1");
+        $eventos2 = DB::select("SELECT * FROM bdp_evento, bdp_imagen WHERE bdp_evento.eve_id "
+                . "NOT IN (SELECT MIN(bdp_evento.eve_id) FROM bdp_evento) AND bdp_imagen.eve_id = "
+                . "bdp_evento.eve_id ORDER BY bdp_evento.eve_id ASC");
+    	return view('Modulos.Home.evento', compact('eventos'), compact('eventos2'));
     }
     
     function getDetalle(){
@@ -93,7 +97,7 @@ class EventoController extends Controller
                     $eveNombre, $eveFechaHora, $eveDireccion, $eveConNombre, $eveConEmail, 
                     $eveConTelefono, $eveBoleta, 101010101010, 1100110011, $eveDescripcion, 1));
         
-        $id = DB::select('SELECT IFNULL(MAX(sit_id),0) AS id FROM bdp_sitio ORDER BY id DESC LIMIT 1');
+        $id = DB::select('SELECT IFNULL(MAX(eve_id),0) AS id FROM bdp_evento ORDER BY id DESC LIMIT 1');
         $id = $id[0]->id;
         
         DB::insert("INSERT INTO bdp_imagen (eve_id, img_ruta) VALUES (?,?)",

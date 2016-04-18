@@ -37,7 +37,7 @@
           <?php echo ((strlen($evento->eve_descripcion) > 300) ? substr(($evento->eve_descripcion), 0, 300) . " ..." : ($evento->eve_descripcion)) ?>
         </p>
         <div class="contenedor-botones">
-          <a href="" class="btn btn-primary">Ver Mas</a>
+          <a href="<?php echo url("home/evento/detalle/" . $evento->eve_id) ?>" class="btn btn-primary">Ver Mas</a>
           <a href="#" class="btn btn-success">Comentarios<span class="badge">33</span></a>
         </div>
 
@@ -69,7 +69,7 @@
           <?php echo ((strlen($evento2->eve_descripcion) > 300) ? substr(($evento2->eve_descripcion), 0, 300) . " ..." : ($evento2->eve_descripcion)) ?>
         </p>
         <div class="contenedor-botones">
-          <a href="#" class="btn btn-primary">Ver Mas</a>
+          <a href="<?php echo url("home/evento/detalle/" . $evento2->eve_id) ?>" class="btn btn-primary">Ver Mas</a>
           <a href="#" class="btn btn-success">Comentarios<span class="badge">33</span></a>
         </div>
       </article>

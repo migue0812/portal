@@ -1,5 +1,5 @@
 <?php 
-$categorias = DB::select("SELECT * FROM bdp_categoria");
+$categorias = DB::select("SELECT * FROM bdp_categoria, bdp_imagen WHERE bdp_imagen.cat_id = bdp_categoria.cat_id");
 ?>
 
 <header>

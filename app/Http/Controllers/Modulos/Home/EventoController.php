@@ -21,8 +21,12 @@ class EventoController extends Controller
     	return view('Modulos.Home.evento', compact('eventos'), compact('eventos2'));
     }
     
-    function getDetalle(){
-    	return view('Modulos.Home.eventoDet');
+    function getDetalle($id){
+        $eveDetalle = DB::select("SELECT * FROM bdp_evento, bdp_imagen WHERE bdp_evento.eve_id = ? "
+                . "AND bdp_imagen.eve_id = bdp_evento.eve_id", array($id));
+        $eveDetalle = $eveDetalle[0];
+        $eventos = DB::select("SELECT * FROM bdp_evento, bdp_imagen WHERE bdp_imagen.eve_id = bdp_evento.eve_id");
+    	return view('Modulos.Home.eventoDet', compact("eveDetalle"), compact("eventos"));
     }
     function getRegistrar(){
         if (Session::has("usuarioAdmin")){

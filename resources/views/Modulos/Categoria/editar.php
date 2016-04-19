@@ -1,3 +1,4 @@
+<?php include ("/../../Templates/Frontend/head.php") ?>
 
 
 <section class="main container">
@@ -34,3 +35,4 @@
                 </div>
             </div> 
 </section>
+<?php include ("/../../Templates/Frontend/foot.php") ?>

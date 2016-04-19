@@ -13,14 +13,14 @@ class SeguridadController extends Controller {
 
     function getLogin() {
         if ((Session::has("usuarioLogueado")) || (Session::has("usuarioAdmin"))){
-            return view('Modulos.Home.index');
+            return redirect(url('home/index'));
         } else {
             return view('Modulos.Seguridad.login');
         }
     }
     function getRegistro() {
         if ((Session::has("usuarioLogueado")) || (Session::has("usuarioAdmin"))){
-            return view('Modulos.Home.index');
+            return redirect(url('home/index'));
         } else {
         return view('Modulos.Seguridad.registro');
     }
@@ -127,6 +127,63 @@ class SeguridadController extends Controller {
         Session::forget("usuarioGenero");
         Session::forget("usuarioAdmin");
         return redirect('home/index');
+    }
+    
+    function getEditaradmin() {
+        if (Session::has("usuarioAdmin")) {
+        
+        $usuario = DB::select("SELECT * FROM bdp_dato_usuario WHERE usu_id = ?",
+                array(1));
+        $usuario = $usuario[0];
+        
+        return view('Modulos.Seguridad.editarAdmin', compact("usuario"));
+    }else {
+            return redirect(url("home/index"));
+    }}
+    function postEditaradmin() {
+
+            
+        $nombre = $_POST['nombre'];
+        $apellidos = $_POST['apellidos'];
+        $email = $_POST['email'];
+        $fecha = $_POST['fecha'];
+        $genero = $_POST['genero'];
+        
+        $reglas = array(
+            "nombre"  => "required | max:40",
+            "apellidos" => "required | max:60",
+            "email" => "required | email",
+            "fecha" => "required | date",
+            "genero" => "required",
+        );
+        
+        $mensajes = [
+            "nombre.required" => "El campo 'nombre' debe ser obligarorio",
+            "nombre.max" => "El campo 'nombre' debe tener máximo 40 caracteres",
+            "apellidos.required" => "El campo 'apellidos' debe ser obligarorio",
+            "apellidos.max" => "El campo 'apellidos' debe tener máximo 60 caracteres",
+            "email.required" => "El campo 'email' debe ser obligarorio",
+            "email.email" => "El campo 'email' no contiene un correo válido",
+            "fecha.required" => "El campo 'fecha de nacimiento' debe ser obligarorio",
+            "fecha.date" => "El campo 'fecha de nacimiento' no contiene una fecha válida",
+            "genero.required" => "El campo 'género' debe ser obligarorio",
+        ];
+        
+    $validacion = Validator::make($_POST, $reglas, $mensajes);
+        
+        if($validacion->fails()){
+           return redirect(url('panelcontrol')) 
+                   ->withErrors($validacion->errors());
+        }
+
+        DB::update('UPDATE bdp_dato_usuario SET '
+                . 'dus_nombre = ?, dus_apellidos = ?, dus_correo = ?, '
+                . 'dus_genero = ?, dus_fecha_nacimiento = ?, dus_updated_at = CURRENT_TIMESTAMP WHERE usu_id = ?', 
+                array($nombre, $apellidos,
+            $email, $genero, $fecha, 1));
+
+        Session::flash("adminEditado", "Se han editado los datos exitosamente");
+        return redirect(url('panelcontrol'));
     }
 
 }

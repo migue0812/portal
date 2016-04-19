@@ -27,7 +27,7 @@ class CategoriaController extends Controller {
         if (Session::has("usuarioAdmin")) {
             return view('Modulos.Categoria.registrar');
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -80,7 +80,7 @@ class CategoriaController extends Controller {
             $categorias = DB::select("SELECT * FROM bdp_categoria");
             return view('Modulos.Categoria.listar', compact("categorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -92,7 +92,7 @@ class CategoriaController extends Controller {
 
             return view('Modulos.Categoria.editar', compact("categorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -134,7 +134,7 @@ class CategoriaController extends Controller {
             Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
             return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -144,7 +144,7 @@ class CategoriaController extends Controller {
             Session::flash("habilitar", "Se ha habilitado exitosamente");
             return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 

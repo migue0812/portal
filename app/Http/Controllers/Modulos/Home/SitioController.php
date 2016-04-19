@@ -31,7 +31,7 @@ class SitioController extends Controller {
             $subcategorias = DB::select("SELECT * FROM bdp_Subcategoria");
             return view('Modulos.Sitio.registrar', compact("categorias"), compact("subcategorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -98,7 +98,7 @@ class SitioController extends Controller {
             $sitios = DB::select("SELECT * FROM bdp_sitio, bdp_estado WHERE bdp_sitio.est_id=bdp_estado.est_id");
             return view('Modulos.Sitio.listar', compact("sitios"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -111,7 +111,7 @@ class SitioController extends Controller {
 
             return view('Modulos.Sitio.editar', compact("sitios"), compact("categorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -166,7 +166,7 @@ class SitioController extends Controller {
             Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
             return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 
@@ -177,7 +177,7 @@ class SitioController extends Controller {
             Session::flash("habilitar", "Se ha inhabilitado exitosamente");
             return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
 

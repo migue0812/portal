@@ -6,6 +6,8 @@
         <div class="panel-body">
             <br>
             <div class="">
+                <b>Más visitados</b>  <a class="btn btn-success" href="<?php echo url("reporte/masvisitados") ?>">Reporte</a>
+                <br><br>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>

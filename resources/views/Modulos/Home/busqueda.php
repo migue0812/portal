@@ -12,6 +12,9 @@
 
   <!--Termina Miga De Pan-->
   <div class="row">
+      <?php if (Session::has("sinResultados")):?>
+    <div class="alert alert-warning alert-dismissible center-block" role="alert"><?php echo Session::get("sinResultados") ?></div>
+                <?php endif ?>
       <?php foreach ($resultados as $resultado): ?>
     <div class="col-md-4">
       <article class="articulo">    
@@ -26,7 +29,7 @@
           <?php echo ((strlen($resultado->sit_descripcion) > 80) ? substr(($resultado->sit_descripcion), 0, 60) . " ..." : ($resultado->sit_descripcion)) ?>
         </p>
         <div class="contenedor-botones">
-          <a href="#" class="btn btn-primary">Ver Mas</a>
+          <a href="<?php echo url("home/sitio/detalle/" . $resultado->sit_id) ?>" class="btn btn-primary">Ver Mas</a>
           <a href="#" class="btn btn-success">Comentarios<span class="badge">33</span></a>
         </div>
 

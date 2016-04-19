@@ -76,7 +76,7 @@ $categorias = DB::select("SELECT * FROM bdp_categoria, bdp_imagen WHERE bdp_imag
                             <ul class="dropdown-menu">
                                 <li><a href="<?php echo url("itinerario") ?>">Mi itinerario</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="">Configuración</a></li>
+                                <li><a href="<?php echo url("usuario/editar") ?>">Configuración</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="<?php echo url("seguridad/logout") ?>">Cerrar Sesión</a></li>
                             </ul>
@@ -95,8 +95,7 @@ $categorias = DB::select("SELECT * FROM bdp_categoria, bdp_imagen WHERE bdp_imag
                             <ul class="dropdown-menu">
                                 <li><a href="../panelcontrol">Panel de control</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="">Configuración</a></li>
-                                <li role="separator" class="divider"></li>
+                                
                                 <li><a href="<?php echo url("seguridad/logout") ?>">Cerrar Sesión</a></li>
                             </ul>
                         </li>

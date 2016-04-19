@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Session;
 class SubCategoriaController extends controller {
 
     function getRegistrar() {
+        if (Session::has("usuarioAdmin")){
         $categorias = DB::select("SELECT * FROM bdp_categoria");
         return view('Modulos.SubCategoria.registrar', compact("categorias"));
-    }
+    }else {
+            return redirect(url("home/index"));
+    }}
 function postRegistrar(){
         
         $subCatNombre = $_POST["nombre"];
@@ -58,7 +61,7 @@ function postRegistrar(){
            $subcategorias = DB::select("SELECT * FROM bdp_subcategoria");
     	return view('Modulos.SubCategoria.listar', compact("subcategorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }	
     }
     
@@ -73,7 +76,7 @@ function postRegistrar(){
         
         return view('Modulos.SubCategoria.editar', compact("subcategorias"), compact("categorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }	
     }
     
@@ -112,7 +115,7 @@ function postRegistrar(){
         Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }	
     }
     
@@ -123,7 +126,7 @@ function postRegistrar(){
         Session::flash("habilitar", "Se ha habilitado exitosamente");
         return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }	
     }
 }

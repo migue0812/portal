@@ -33,7 +33,7 @@ class EventoController extends Controller
             $categorias = DB::select("SELECT * FROM bdp_categoria");
     	return view('Modulos.Evento.registrar', compact("categorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
     
@@ -117,7 +117,7 @@ class EventoController extends Controller
             $eventos = DB::select("SELECT * FROM bdp_evento, bdp_estado WHERE bdp_evento.est_id=bdp_estado.est_id");
     	return view('Modulos.Evento.listar', compact("eventos"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }  	
     }
     
@@ -131,7 +131,7 @@ class EventoController extends Controller
                       
         return view('Modulos.Evento.editar', compact("eventos"), compact("categorias"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }	
     }
     
@@ -205,7 +205,7 @@ function getInhabilitar($id) {
         Session::flash("inhabilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }  	
     }     
     function getHabilitar($id) {
@@ -216,7 +216,7 @@ function getInhabilitar($id) {
         Session::flash("habilitar", "Se ha inhabilitado exitosamente");
         return redirect(url("panelcontrol"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         } 	
     }
 }

@@ -1,3 +1,5 @@
+<?php include ("/../../Templates/Frontend/head.php") ?>
+
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -72,3 +74,4 @@
         </div>
     </div>
 </div>
+<?php include ("/../../Templates/Frontend/foot.php") ?>

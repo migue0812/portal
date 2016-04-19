@@ -15,7 +15,7 @@ class ItinerarioController extends Controller
         if (Session::has("usuarioLogueado")){
     	return view('Modulos.Itinerario.itinerario');
     } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
     function getSitios(){
@@ -26,7 +26,7 @@ class ItinerarioController extends Controller
                 . "AND bdp_itinerario.usu_id=$idUsuario");
     	return view('Modulos.Itinerario.sitios', compact("sitios"));
     } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
     function getEventos(){
@@ -37,7 +37,7 @@ class ItinerarioController extends Controller
                 . "AND bdp_itinerario.usu_id=$idUsuario");
     	return view('Modulos.Itinerario.eventos', compact("eventos"));
     }else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     }
     
@@ -67,7 +67,7 @@ class ItinerarioController extends Controller
             Session::flash("sitioVisitado", "El sitio ha sido visitado");
             return redirect(url("itinerario"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
 }
 function getSitionovisitado($id) {
@@ -80,7 +80,7 @@ function getSitionovisitado($id) {
             Session::flash("sitioNoVisitado", "El sitio no ha sido visitado");
             return redirect(url("itinerario"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
 }
 function getSitioeliminar($id) {
@@ -92,7 +92,7 @@ function getSitioeliminar($id) {
             Session::flash("sitioEliminado", "Se ha eliminado el sitio del itinerario");
             return redirect(url("itinerario"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
 }
  function getEvento($id) {
@@ -120,7 +120,7 @@ function getSitioeliminar($id) {
             Session::flash("eventoEliminado", "Se ha eliminado el evento del itinerario");
             return redirect(url("itinerario"));
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
 }
 }

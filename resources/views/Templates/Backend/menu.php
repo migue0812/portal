@@ -52,7 +52,7 @@
             <a class="enlace-menu" href="<?php echo url("usuario/listar") ?>"><i class="fa fa-fw fa-dashboard"></i> Usuarios</a>
         </li>
         <li>
-            <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Configuracion</a>
+            <a class="enlace-menu" href="<?php echo url("seguridad/editaradmin") ?>"><i class="fa fa-fw fa-wrench"></i> Configuracion</a>
         </li>
 
     </ul>

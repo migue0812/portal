@@ -36,6 +36,9 @@
     <?php if (Session::has("habilitar")):?>
     <div class="alert alert-info alert-dismissible center-block" role="alert"><?php echo Session::get("habilitar") ?></div>
                 <?php endif ?>
+    <?php if (Session::has("adminEditado")):?>
+    <div class="alert alert-warning alert-dismissible center-block" role="alert"><?php echo Session::get("adminEditado") ?></div>
+                <?php endif ?>
         <?php if ($errors->any()): ?>
                          <div class="alert alert-danger alert-dismissible center-block" role="alert">
                              <ul>

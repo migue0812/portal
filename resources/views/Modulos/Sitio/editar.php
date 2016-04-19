@@ -1,3 +1,4 @@
+<?php include ("/../../Templates/Frontend/head.php") ?>
 
 <section class="main container">
     <div class="box">
@@ -50,3 +51,5 @@
         </div>
     </div>
 </section>
+<?php include ("/../../Templates/Frontend/foot.php") ?>
+

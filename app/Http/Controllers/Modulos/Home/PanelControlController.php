@@ -14,7 +14,7 @@ class PanelControlController extends Controller
         if (Session::has("usuarioAdmin")){
             return view('Modulos.PanelControl.index');
         } else {
-            return view('Modulos.Home.index');
+            return redirect(url("home/index"));
         }
     	
     }

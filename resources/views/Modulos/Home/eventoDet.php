@@ -84,7 +84,7 @@
         <?php if (Session::has("usuarioLogueado")): ?>
             <div class="opcionesSit col-md-6 col-lg-6">
                 <div class="city-social">
-                    <a class="icon-add-to-list btn " href="<?php echo url("itinerario/evento/" . $eveDetalle->sit_id) ?>"> Itinerario</a>
+                    <a class="icon-add-to-list btn " href="<?php echo url("itinerario/evento/" . $eveDetalle->eve_id) ?>"> Itinerario</a>
                     <script
                         type="text/javascript"
                         async defer

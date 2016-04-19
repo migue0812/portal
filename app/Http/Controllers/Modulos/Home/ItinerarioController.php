@@ -31,7 +31,11 @@ class ItinerarioController extends Controller
     }
     function getEventos(){
         if (Session::has("usuarioLogueado")){
-    	return view('Modulos.Itinerario.eventos');
+            $idUsuario = Session::get("usuarioId");
+        
+        $eventos = DB::select("SELECT * FROM bdp_evento, bdp_itinerario WHERE bdp_evento.eve_id=bdp_itinerario.eve_id "
+                . "AND bdp_itinerario.usu_id=$idUsuario");
+    	return view('Modulos.Itinerario.eventos', compact("eventos"));
     }else {
             return view('Modulos.Home.index');
         }
@@ -86,6 +90,34 @@ function getSitioeliminar($id) {
                     array($id, $idUsuario));
 
             Session::flash("sitioEliminado", "Se ha eliminado el sitio del itinerario");
+            return redirect(url("itinerario"));
+        } else {
+            return view('Modulos.Home.index');
+        }
+}
+ function getEvento($id) {
+        
+        $idUsuario = Session::get("usuarioId");
+        $verificar = DB::select("SELECT * FROM bdp_itinerario WHERE eve_id=? AND usu_id=?", 
+                array($id, $idUsuario));
+        if($verificar){
+           Session::flash("eventoExistente", "Ya existe este evento en el itinerario"); 
+           return redirect(url("itinerario")); 
+        }  else {
+         DB::insert("INSERT INTO bdp_itinerario (usu_id, eve_id) VALUES (?,?)",
+                array($idUsuario, $id));
+        
+        Session::flash("evento", "Se ha agregado exitosamente el evento al itinerario");
+        return redirect(url("itinerario"));   
+        }
+    }
+    function getEventoeliminar($id) {
+        if (Session::has("usuarioLogueado")) {
+            $idUsuario = Session::get("usuarioId");
+            DB::delete("DELETE FROM bdp_itinerario WHERE eve_id = ? AND usu_id = ?", 
+                    array($id, $idUsuario));
+
+            Session::flash("eventoEliminado", "Se ha eliminado el evento del itinerario");
             return redirect(url("itinerario"));
         } else {
             return view('Modulos.Home.index');

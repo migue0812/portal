@@ -14,7 +14,13 @@
     <?php if (Session::has("sitio")):?>
     <div class="alert alert-success alert-dismissible center-block" role="alert"><?php echo Session::get("sitio") ?></div>
                 <?php endif ?>
+    <?php if (Session::has("evento")):?>
+    <div class="alert alert-success alert-dismissible center-block" role="alert"><?php echo Session::get("evento") ?></div>
+                <?php endif ?>
     <?php if (Session::has("sitioExistente")):?>
+    <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("sitioExistente") ?></div>
+                <?php endif ?>
+    <?php if (Session::has("eventoExistente")):?>
     <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("sitioExistente") ?></div>
                 <?php endif ?>
      <?php if (Session::has("sitioVisitado")):?>
@@ -26,6 +32,9 @@
     <?php if (Session::has("sitioEliminado")):?>
     <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("sitioEliminado") ?></div>
                 <?php endif ?>
+    <?php if (Session::has("eventoEliminado")):?>
+    <div class="alert alert-danger alert-dismissible center-block" role="alert"><?php echo Session::get("eventoEliminado") ?></div>
+                <?php endif ?>
     
     <!--Termina Miga De Pan-->
     <div class="row">
@@ -34,7 +43,7 @@
                 <div class="list-group">
                     <a href="<?php echo url("itinerario/sitios")?>" class="list-group-item menu-eventos">Sitios</a>
                     <a href="<?php echo url("itinerario/eventos")?>" class="list-group-item menu-eventos">Eventos</a>
-                    <a href="#" class="list-group-item menu-eventos">Proximos</a>
+                    
                 </div>
             </aside>
         </div>
